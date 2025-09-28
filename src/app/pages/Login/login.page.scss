@@ -1,0 +1,102 @@
+:host {
+  ion-content {
+    --background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza logo + form */
+    gap: 50px; /* Espaço entre logo e form */
+    width: 100%;
+  }
+
+  .logo {
+  width: 150px;
+  margin-top: 120px; /* Desce a logo */
+  margin-bottom: 0px; /* Mantém espaço entre logo e formulário */
+}
+
+
+
+  form {
+    background: linear-gradient(135deg, #f8bcdd, #f8bee2);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  ion-item {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    --highlight-color-focused: #6c63ff;
+  }
+
+  ion-label {
+    color: #666;
+    font-weight: 500;
+  }
+
+  ion-input {
+    font-size: 1rem;
+  }
+
+  ion-button {
+    --background: #7a3ef3;
+    --background-hover: linear-gradient(135deg, #ff6584, #6c63ff);
+    --border-radius: 12px;
+    --box-shadow: 0 5px 15px rgba(108,99,255,0.3);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  p {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.fancy-header {
+  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-title {
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+}
+
+.fancy-footer {
+  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-title {
+    color: white;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+

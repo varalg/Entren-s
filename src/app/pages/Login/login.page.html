@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="container">
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+
+    <!-- Formulário -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h1>Entre Nós</h1>
+      <p>Faça login para acessar</p>
+
+      <ion-item>
+        <ion-input type="email" formControlName="email" label="E-mail" label-placement="floating"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" formControlName="senha" label="Senha" label-placement="floating"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit">Entrar</ion-button>
+
+      <p [style.color]="mensagemCor">{{ mensagem }}</p>
+    </form>
+  </div>
+</ion-content>
