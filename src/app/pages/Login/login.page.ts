@@ -14,7 +14,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     IonItem,
     IonContent,
     IonInput,
-    io
     CommonModule,
     FormsModule,
     ReactiveFormsModule 
