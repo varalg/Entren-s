@@ -15,8 +15,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     IonContent,
     IonInput,
     CommonModule,
+    IonTitle,
+    IonHeader,
+    IonFooter,
+
     FormsModule,
-    ReactiveFormsModule 
+    IonToolbar,
+    ReactiveFormsModule
   ]
 })
 export class LoginPage {
@@ -27,7 +32,7 @@ export class LoginPage {
   usuarioValido = {
     email: 'teste@exemplo.com',
     senha: '123456',
-    nome: 'Usuário Teste'
+    nome: ''
   };
 
   constructor(private fb: FormBuilder) {
@@ -47,7 +52,7 @@ export class LoginPage {
     }
 
     if (email === this.usuarioValido.email && senha === this.usuarioValido.senha) {
-      this.mensagem = `Bem-vindo(a), ${this.usuarioValido.nome}!`;
+      this.mensagem = `Bem-vindo(a) ${this.usuarioValido.nome}!`;
       this.mensagemCor = 'green';
       this.loginForm.reset();
     } else {
