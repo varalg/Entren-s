@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" class="ion-padding welcome-page">
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- Logo no topo -->
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+
+    <!-- Textos e botões agrupados -->
+    <div class="welcome-section">
+      <h1 class="welcome-title">Seja Bem-vindo(a)</h1>
+      <p class="welcome-subtitle">Eternize as suas memórias conosco</p>
+      <p>oi testando branch</p>
+
+      <div class="button-group">
+        <ion-button routerLink="/">Cadastro</ion-button>
+        <ion-button routerLink="/login">Login</ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-title class="footer-text">© 2025 App Entre-nós. Todos os direitos reservados.</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
