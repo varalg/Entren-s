@@ -4,29 +4,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding welcome-page">
+<ion-content [fullscreen]="true" class="welcome-page ion-padding">
   <div id="container">
-    <!-- Logo no topo -->
+    <!-- Logo -->
     <img src="assets/logo.png" alt="Logo" class="logo" />
 
-    <!-- Textos e botões agrupados -->
+    <!-- Textos -->
     <div class="welcome-section">
       <h1 class="welcome-title">Seja Bem-vindo(a)</h1>
       <p class="welcome-subtitle">Eternize as suas memórias conosco</p>
-      <p>oi testando branch</p>
 
+      <!-- Botões -->
       <div class="button-group">
-        <ion-button routerLink="/">Cadastro</ion-button>
-        <ion-button routerLink="/login">Login</ion-button>
+        <ion-button routerLink="/cadastro" expand="block">Cadastro</ion-button>
+        <ion-button routerLink="/login" expand="block" fill="outline" color="primary">Login</ion-button>
       </div>
     </div>
   </div>
 </ion-content>
 
-<!-- Footer -->
 <ion-footer>
   <ion-toolbar color="tertiary">
-    <ion-title class="footer-text">© 2025 App Entre-nós. Todos os direitos reservados.</ion-title>
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
   </ion-toolbar>
 </ion-footer>
-

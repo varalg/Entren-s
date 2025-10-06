@@ -4,17 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-content">
-  <div class="login-container">
+<ion-content class="cadastro-content">
+  <div class="cadastro-container">
     <!-- Logo -->
     <img src="assets/logo.png" alt="Logo" class="logo" />
 
     <!-- Título -->
-    <h2>Bem-vindo!</h2>
-    <p>Faça login para continuar</p>
+    <h2>Crie sua conta</h2>
+    <p>Preencha os campos abaixo</p>
 
     <!-- Formulário -->
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+
       <ion-item fill="solid">
         <ion-input
           type="email"
@@ -33,14 +34,21 @@
         </ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit">
-        Entrar
-      </ion-button>
+      <ion-item fill="solid">
+        <ion-input
+          type="password"
+          formControlName="confirmarSenha"
+          placeholder="Confirme sua senha"
+          labelPlacement="floating">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit">Cadastrar</ion-button>
 
       <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
 
       <div class="extra-links">
-        <a routerLink="/cadastro">Criar conta</a>
+        <a routerLink="/login">Já tem uma conta? Entrar</a>
       </div>
     </form>
   </div>

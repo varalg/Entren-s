@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="homenagens-content">
+
+  <div class="content-container">
+    <!-- Barra de busca -->
+    <div class="search-bar">
+      <ion-input placeholder="Pesquisar homenagem..."></ion-input>
+      <ion-button>Buscar</ion-button>
+    </div>
+
+    <!-- Lista de homenagens -->
+    <div class="homenagens-list">
+      <div class="card" *ngFor="let homenagem of homenagens">
+        <img [src]="homenagem.imagem" alt="Imagem da homenagem" />
+        <h3>{{ homenagem.titulo }}</h3>
+        <p>{{ homenagem.texto }}</p>
+        <ion-button expand="block">Visualizar</ion-button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

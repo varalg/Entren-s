@@ -10,13 +10,13 @@ import {
   IonItem,
   IonButton,
   IonInput,
-  IonFooter,
+  IonFooter
 } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.page.html',
+  styleUrls: ['./cadastro.page.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -27,46 +27,43 @@ import {
     IonContent,
     IonInput,
     IonTitle,
-    IonFooter,
     IonHeader,
     IonToolbar,
+    IonFooter
   ],
 })
-export class LoginPage {
-  loginForm: FormGroup;
-  mensagem = '';
-  mensagemCor = '';
-
-  usuarioValido = {
-    email: 'teste@exemplo.com',
-    senha: '123456',
-    nome: 'Usuário',
-  };
+export class CadastroPage {
+  cadastroForm: FormGroup;
+  mensagem: string = '';
+  mensagemCor: string = '';
 
   constructor(private fb: FormBuilder, private router: Router) {
-    this.loginForm = this.fb.group({
+    this.cadastroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required],
+      confirmarSenha: ['', Validators.required]
     });
   }
 
-  login() {
-    const { email, senha } = this.loginForm.value;
+  cadastrar() {
+    const { email, senha, confirmarSenha } = this.cadastroForm.value;
 
-    if (!email || !senha) {
+    if (!email || !senha || !confirmarSenha) {
       this.mensagem = 'Preencha todos os campos!';
       this.mensagemCor = 'red';
       return;
     }
 
-    if (email === this.usuarioValido.email && senha === this.usuarioValido.senha) {
-      this.mensagem = `Bem-vindo(a), ${this.usuarioValido.nome}!`;
-      this.mensagemCor = 'green';
-      setTimeout(() => this.router.navigate(['/homenagens']), 1000);
-      this.loginForm.reset();
-    } else {
-      this.mensagem = 'E-mail ou senha incorretos!';
+    if (senha !== confirmarSenha) {
+      this.mensagem = 'As senhas não conferem!';
       this.mensagemCor = 'red';
+      return;
     }
+
+    this.mensagem = 'Cadastro realizado com sucesso!';
+    this.mensagemCor = 'green';
+    this.cadastroForm.reset();
+
+    setTimeout(() => this.router.navigate(['/login']), 1000);
   }
 }

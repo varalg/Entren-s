@@ -4,9 +4,9 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonFooter } fro
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  imports: [IonFooter, IonButton, IonHeader, IonToolbar, IonTitle, IonContent , RouterLink],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+  imports: [IonFooter, IonButton, IonHeader, IonToolbar, IonTitle, IonContent, RouterLink],
 })
 export class HomePage {
   constructor() {}
