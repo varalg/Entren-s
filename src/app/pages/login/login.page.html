@@ -3,47 +3,29 @@
     <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="login-content">
 
-  <div class="login-container">
-    <!-- Logo -->
-    <img src="assets/logo.png" alt="Logo" class="logo" />
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <!-- Título -->
-    <h2>Bem-vindo!</h2>
-    <p>Faça login para continuar</p>
+<ion-content class="ion-padding">
 
-    <!-- Formulário -->
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      
-      <ion-item fill="solid">
-        <ion-input 
-          type="email" 
-          formControlName="email" 
-          placeholder="Digite seu e-mail">
-        </ion-input>
-      </ion-item>
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input
+      [type]="showPassword ? 'text' : 'password'"
+      [(ngModel)]="senha">
+    </ion-input>
 
-      <ion-item fill="solid">
-        <ion-input 
-          type="password" 
-          formControlName="senha" 
-          placeholder="Digite sua senha">
-        </ion-input>
-      </ion-item>
-
-      <ion-button expand="block" type="submit">
-        Entrar
-      </ion-button>
-
-      <p [style.color]="mensagemCor">{{ mensagem }}</p>
-
-      <div class="extra-links">
-        <a href="#">Esqueceu a senha?</a>
-        <a href="#">Criar conta</a>
-      </div>
-    </form>
-  </div>
+    <ion-button
+      fill="clear"
+      slot="end"
+      (click)="togglePassword()">
+      <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+    </ion-button>
+  </ion-item>
 
 </ion-content>
 

@@ -21,6 +21,10 @@ export const routes: Routes = [
     path: 'plano',
     loadComponent: () => import('./pages/plano/plano.page').then( m => m.PlanoPage)
   },
+  {
+    path: 'card-previa',
+    loadComponent: () => import('./card-previa/card-previa.page').then( m => m.CardPreviaPage)
+  },
 
 
   

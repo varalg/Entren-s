@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Pré-visualização da Homenagem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Título da Homenagem</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Título da Homenagem
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">''''</ion-label>
+        <ion-input type="text" placeholder="Digite o título da homenagem"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">texto da Homenagem</ion-label>
+        <ion-textarea placeholder="Escreva sua mensagem de homenagem" rows="6"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">escolha uma Música</ion-label>
+        <ion-select placeholder="Escolha a música">
+          <ion-select-option value="musica1">Música 1</ion-select-option>
+          <ion-select-option value="musica2">Música 2</ion-select-option>
+          <ion-select-option value="musica3">Música 3</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">link para a Homenagem</ion-label>
+        <ion-input type="url" placeholder="Adicione um link para sua homenagem"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Adicionar Imagem ou Vídeo</ion-label>
+        <ion-button expand="block">Escolher Arquivo</ion-button>
+      </ion-item>
+
+      <ion-button expand="full" color="primary">
+        Visualizar Homenagem
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
