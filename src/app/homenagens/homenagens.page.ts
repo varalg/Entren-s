@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonInput, IonFooter } from '@ionic/angular/standalone';
 
 @Component({
@@ -9,30 +10,36 @@ import { IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonInput, IonFo
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     IonContent,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonButton,
     IonInput,
+    IonFooter
   ]
 })
 export class HomenagensPage {
+  termoBusca: string = '';
+
   homenagens = [
-    {
-      titulo: 'Homenagem para Maria',
-      texto: 'Obrigada por todos os momentos especiais!',
-      imagem: 'assets/homenagem1.jpg'
-    },
-    {
-      titulo: 'Homenagem para João',
-      texto: 'Você sempre será lembrado com carinho.',
-      imagem: 'assets/homenagem2.jpg'
-    },
-    {
-      titulo: 'Homenagem para Ana',
-      texto: 'Sua amizade é inesquecível.',
-      imagem: 'assets/homenagem3.jpg'
-    }
+    { titulo: 'Dia das Mães', texto: 'Obrigada por todos os momentos especiais!', imagem: 'assets/homenagem1.jpg' },
+    { titulo: 'Dia dos Namorados', texto: 'Você sempre será lembrado com carinho.', imagem: 'assets/homenagem2.jpg' },
+    { titulo: 'Dia do Professor', texto: 'Obrigada por tudo.', imagem: 'assets/homenagem3.jpg' }
   ];
+
+  // Filtra homenagens pelo termo de busca
+  homenagensFiltradas() {
+    if (!this.termoBusca) return this.homenagens;
+    return this.homenagens.filter(h => h.titulo.toLowerCase().includes(this.termoBusca.toLowerCase()));
+  }
+
+  buscar() {
+    // função opcional, a filtragem já acontece automaticamente
+  }
+
+  verHomenagem(homenagem: any) {
+    alert(`Visualizando: ${homenagem.titulo}`);
+  }
 }

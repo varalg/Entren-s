@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
   IonHeader,
@@ -10,15 +10,14 @@ import {
   IonItem,
   IonButton,
   IonInput,
-  IonFooter
-} from '@ionic/angular/standalone';
+  IonFooter, IonRouterLink } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonRouterLink, 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -29,6 +28,7 @@ import {
     IonTitle,
     IonHeader,
     IonToolbar,
+    IonRouterLink,
     IonFooter
   ],
 })
