@@ -1,0 +1,73 @@
+.card-previa-page {
+  --background: #1f0438;
+  color: #fff;
+
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 16px;
+  }
+
+  ion-card.editor {
+    margin-bottom: 24px;
+    background: #1c1c1c;
+    color: #fff;
+
+    ion-card-title {
+      color: #ff6b81;
+      font-weight: bold;
+    }
+
+    ion-item {
+      --background: transparent;
+      --color: #fff;
+    }
+
+    ion-input, ion-textarea {
+      color: #fff;
+    }
+  }
+
+  .preview {
+    background: #603770;
+    border-radius: 12px;
+    border: 1px solid #aa05a2;
+    box-shadow: 0 0 15px rgba(150, 2, 100, 0.849);
+    text-align: center;
+    padding: 20px;
+  }
+
+  .titulo {
+    font-family: 'Great Vibes', cursive;
+    color: #ac61dd;
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .mensagem {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .video-container {
+    margin-bottom: 16px;
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+  }
+
+  .instrucao {
+    font-size: 0.9rem;
+    color: #ee9797;
+    margin-bottom: 8px;
+  }
+
+  .spotify-container {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}

@@ -1,57 +1,62 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Pré-visualização da Homenagem</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="card-previa-page" fullscreen>
+  <div class="container">
 
-<ion-content [fullscreen]="true">
+    <ion-card class="editor">
+      <ion-card-header>
+        <ion-card-title>Personalize sua homenagem 💌</ion-card-title>
+      </ion-card-header>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Título da Homenagem</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input [(ngModel)]="titulo" placeholder="Ex: Meu amor, minha vida"></ion-input>
+        </ion-item>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Título da Homenagem
-      </ion-card-title>
-    </ion-card-header>
+        <ion-item>
+          <ion-label position="floating">Mensagem</ion-label>
+          <ion-textarea [(ngModel)]="mensagem" placeholder="Escreva sua mensagem aqui..."></ion-textarea>
+        </ion-item>
 
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked">''''</ion-label>
-        <ion-input type="text" placeholder="Digite o título da homenagem"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="floating">Versículo ou frase</ion-label>
+          <ion-textarea [(ngModel)]="versiculo" placeholder="Ex: 'O amor é paciente e bondoso...'"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-item>
-        <ion-label position="stacked">texto da Homenagem</ion-label>
-        <ion-textarea placeholder="Escreva sua mensagem de homenagem" rows="6"></ion-textarea>
-      </ion-item>
+    <div class="preview">
+      <h1 class="titulo">Seu título aparecerá aqui</h1>
 
-      <ion-item>
-        <ion-label position="stacked">escolha uma Música</ion-label>
-        <ion-select placeholder="Escolha a música">
-          <ion-select-option value="musica1">Música 1</ion-select-option>
-          <ion-select-option value="musica2">Música 2</ion-select-option>
-          <ion-select-option value="musica3">Música 3</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <p class="mensagem">
+        {Sua mensagem personalizada será exibida aqui}
+        <br /><br />
+        <i>versiculo</i>
+      </p>
 
-      <ion-item>
-        <ion-label position="stacked">link para a Homenagem</ion-label>
-        <ion-input type="url" placeholder="Adicione um link para sua homenagem"></ion-input>
-      </ion-item>
+      <!-- VÍDEO -->
+      <div class="video-container">
+        <video controls>
+          <source [src]="videoUrl" type="video/mp4" />
+          Seu navegador não suporta o vídeo.
+        </video>
+      </div>
 
-      <ion-item>
-        <ion-label position="stacked">Adicionar Imagem ou Vídeo</ion-label>
-        <ion-button expand="block">Escolher Arquivo</ion-button>
-      </ion-item>
+      <!-- TEXTO DE INSTRUÇÃO -->
+      <p class="instrucao">
+        Dê play na música abaixo para acompanhar a homenagem 
+      </p>
 
-      <ion-button expand="full" color="primary">
-        Visualizar Homenagem
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+      <!-- SPOTIFY PLAYER -->
+      <div class="spotify-container">
+        <iframe
+          [src]="spotifyUrl"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
 </ion-content>
