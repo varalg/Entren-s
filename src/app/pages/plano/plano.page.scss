@@ -1,4 +1,4 @@
-/* Onda no topo */
+
 .wave-container {
   position: absolute;
   top: 0;
@@ -41,7 +41,6 @@
   }
 }
 
-/* Conteúdo principal */
 .plano-content {
   --padding-top: 180px; /* Subi o título e os cards */
 }
@@ -51,7 +50,7 @@
   text-align: center;
   font-weight: 700;
   font-size: 1.8rem;
-  margin-bottom: 30px; /* Mais espaço entre título e cards */
+  margin-bottom: 30px; 
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -68,7 +67,7 @@
 .plano-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espaçamento entre os cards */
+  gap: 20px; 
   align-items: center;
   padding: 0 10px;
 
@@ -79,7 +78,6 @@
   }
 }
 
-/* Cards estilizados */
 .card-plano-estilizado {
   $cor-borda: #874fcc;
   $cor-fundo: #fbf0ff;
@@ -87,7 +85,7 @@
 
   background: $cor-fundo !important;
   border: 3px solid $cor-borda;
-  border-radius: 20px !important; /* Mais arredondado */
+  border-radius: 20px !important; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
