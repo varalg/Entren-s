@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import {
   IonContent,
   IonHeader,
@@ -12,7 +10,11 @@ import {
   IonInput,
   IonIcon,
   IonButton,
-  IonFooter
+  IonFooter,
+  IonLabel,
+  IonGrid,
+  IonRow,
+  IonCol // Adicionado para suportar o layout de grid
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -21,9 +23,7 @@ import {
   styleUrls: ['./login.page.scss'],
   standalone: true,
   imports: [
-
     CommonModule,
-
     FormsModule,
     ReactiveFormsModule,
     IonContent,
@@ -35,14 +35,17 @@ import {
     IonIcon,
     IonButton,
     IonFooter,
-
+    IonLabel,
+    IonGrid, 
+    IonRow,
+    IonCol,
   ]
 })
 export class LoginPage {
+  mostrarSenha: boolean = false;
   loginForm: FormGroup;
   mensagem: string = '';
   mensagemCor: string = '';
-  showPassword: boolean = false;
 
   usuarioValido = {
     email: 'teste@exemplo.com',
@@ -58,32 +61,26 @@ export class LoginPage {
   }
 
   login() {
-    const { email, senha } = this.loginForm.value;
-
-    if (!email || !senha) {
-      this.mensagem = 'Preencha todos os campos!';
+    if (this.loginForm.invalid) {
+      this.mensagem = 'Preencha todos os campos corretamente!';
       this.mensagemCor = 'red';
       return;
     }
+    
+    const { email, senha } = this.loginForm.value;
 
     if (email === this.usuarioValido.email && senha === this.usuarioValido.senha) {
       this.mensagem = `Bem-vindo ${this.usuarioValido.nome || email}!`;
       this.mensagemCor = 'green';
-      this.loginForm.reset();
-    } else {
+    }
+     else {
       this.mensagem = 'E-mail ou senha incorretos!';
       this.mensagemCor = 'red';
     }
   }
 
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-    this.loginForm = this.fb.group({
-  email: ['', [Validators.required, Validators.email]],
-  senha: ['', Validators.required]
-});
-
+  alternarExibicaoSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
   }
+
 }
-
-

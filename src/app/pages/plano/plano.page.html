@@ -1,52 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Escolha seu Plano</ion-title>
+<ion-header translucent="true">
+  <ion-toolbar color="transparent">
+    <!-- Sem título no header -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Planos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="plano-content" fullscreen>
+  <!-- Onda no topo -->
+  <div class="wave-container"></div>
 
-  <ion-grid>
-    <ion-row>
-  
-      <ion-col size="12" size-md="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Plano Gratuito</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>
-              Acesse recursos básicos e publique uma homenagem simples sem custo.
-            </p>
-            <ion-button expand="block" color="success">
-              Escolher Gratuito
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+  <!-- Título abaixo da onda -->
+  <div class="page-title-below-wave">
+    <h1>Escolha o seu plano ideal</h1>
+  </div>
 
-      <ion-col size="12" size-md="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Plano Premium</ion-card-title>
-            <ion-note slot="end">R$14,80 (pagamento único)</ion-note>
-          </ion-card-header>
-          <ion-card-content>
-            <p>
-              Inclui homenagem com destaque, galeria de fotos, músicas e mensagens personalizadas.
-            </p>
-            <ion-button expand="block" color="primary">
-              Escolher Premium
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+  <!-- Grid de planos -->
+  <div class="plano-grid">
+    <ion-card class="card-plano-estilizado">
+      <ion-card-header>
+        <ion-card-title>Plano Básico</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Conforme usar...</p>
+        <ion-note>R$ 14,90</ion-note>
+        <ion-button expand="block" class="btn-lilas">Assinar</ion-button>
+      </ion-card-content>
+    </ion-card>
 
-    </ion-row>
-  </ion-grid>
+    <ion-card class="card-plano-estilizado">
+      <ion-card-header>
+        <ion-card-title>Plano Premium</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Uso Mensal...</p>
+        <ion-note>R$ 29,90</ion-note>
+        <ion-button expand="block" class="btn-rosa">Assinar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

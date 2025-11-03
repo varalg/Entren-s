@@ -1,38 +1,87 @@
-<ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding background-gradient">
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <div class="header-onda">
+    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#d650ff" fill-opacity="1"
+        d="M0,160L60,154.7C120,149,240,139,360,154.7C480,171,600,213,720,213.3C840,213,960,171,1080,154.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+      </path>
+    </svg>
+  </div>
 
-<ion-content class="ion-padding">
+  <div class="login-container">
 
-  <ion-item>
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input
-      [type]="showPassword ? 'text' : 'password'"
-      [(ngModel)]="senha">
-    </ion-input>
+    <div class="text-area">
+      <h1>Seja Bem Vindo!</h1>
+      <p>Eternize conosco os seus sentimentos.</p>
+      <div class="underline"></div>
+    </div>
 
-    <ion-button
-      fill="clear"
-      slot="end"
-      (click)="togglePassword()">
-      <ion-icon [name]="showPassword ? 'eye-off' : 'eye'">
-      </ion-icon>
-    </ion-button>
-  </ion-item>
+    <form [formGroup]="loginForm">
+      <ion-item lines="none" class="custom-input">
+        <ion-label position="stacked">E-mail</ion-label>
+        <ion-input
+          type="email"
+          formControlName="email"
+          placeholder="seu@email.com"
+          name="email">
+        </ion-input>
+      </ion-item>
 
+      <ion-item lines="none" class="custom-input">
+        <ion-label position="stacked">Senha</ion-label>
+        <ion-input
+          [type]="mostrarSenha ? 'text' : 'password'"
+          formControlName="senha"
+          placeholder="********"
+          name="senha">
+        </ion-input>
+
+        <ion-button
+          fill="clear"
+          slot="end"
+          class="password-toggle-button"
+          (click)="alternarExibicaoSenha()">
+          <ion-icon
+            [name]="mostrarSenha ? 'eye-off-outline' : 'eye-outline'"
+            class="password-toggle-icon">
+          </ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <p *ngIf="mensagem" [style.color]="mensagemCor" class="ion-text-center ion-padding-top">
+        {{ mensagem }}
+      </p>
+
+      <div class="forgot-password-link">
+        <a href="#">Esqueceu a sua senha?</a>
+      </div>
+
+      <ion-grid class="button-grid">
+        <ion-row>
+          <ion-col size="6" class="ion-no-padding">
+            <ion-button expand="block" fill="outline" class="sign-up-button">
+              CADASTRAR-SE
+            </ion-button>
+          </ion-col>
+          <ion-col size="6" class="ion-no-padding">
+            <ion-button
+              expand="block"
+              class="sign-in-button"
+              (click)="login()"
+              [disabled]="loginForm.invalid">
+              ENTRAR
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
 </ion-content>
 
-<!-- Footer -->
-<ion-footer>
-  <ion-toolbar color="tertiary">
-    <ion-title class="footer-text">© 2025 App Entre-nós. Todos os direitos reservados.</ion-title>
+<ion-footer class="custom-footer">
+  <ion-toolbar>
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
   </ion-toolbar>
 </ion-footer>

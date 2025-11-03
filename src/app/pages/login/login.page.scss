@@ -1,56 +1,152 @@
-.login-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  --background: #f5f5f5;
+:root {
+  --ion-color-peach: #d650ff;
+  --ion-color-peach-light: #ffb899;
+  --ion-background-color: #ffffff;
+  --ion-color-tertiary: var(--ion-color-peach);
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-toolbar-background: linear-gradient(135deg, var(--ion-color-peach-light), var(--ion-color-peach));
+  --ion-toolbar-color: #e75858;
+}
+
+ion-content {
+  --background: var(--ion-background-color);
+  border-radius: 30px;
+  margin: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(74, 70, 82, 0.05);
+  position: relative;
+}
+
+.header-onda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .login-container {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  padding: 20px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: 160px;
 }
 
-.logo {
-  width: 100px;
-  margin-bottom: 20px;
+.text-area {
+  margin-bottom: 40px;
+  color: #9a5cc4;
+
+  h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #55387a;
+  }
+
+  p {
+    color: #a265be;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+  }
 }
 
-h2 {
-  margin: 10px 0 5px;
-  color: #800080;
+.underline {
+  width: 50px;
+  height: 3px;
+  background-color: var(--ion-color-peach-light);
+  border-radius: 5px;
 }
 
-p {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 20px;
+.custom-input {
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  --inner-border-width: 0;
+  background: transparent;
+  margin-bottom: 25px;
+
+  ion-label {
+    font-weight: 600;
+    color: #555;
+    transform: translateY(10px);
+  }
+
+  ion-input {
+    --color: #333;
+    font-size: 1.1em;
+    font-weight: 400;
+    padding-top: 10px !important;
+  }
 }
 
-ion-item {
-  margin-bottom: 15px;
-  border-radius: 8px;
+.password-toggle-button {
+  --padding-end: 0;
+  --padding-start: 0;
 }
 
-.extra-links {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
+.password-toggle-icon {
+  color: var(--ion-color-peach-light);
+  font-size: 1.2em;
+  opacity: 0.8;
 }
 
-.extra-links a {
-  color: #800080;
-  text-decoration: none;
+.forgot-password-link {
+  text-align: right;
+  margin-bottom: 40px;
+
+  a {
+    color: var(--ion-color-peach);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
 }
- .footer-text {
-  font-size: 7.5px;
-  text-align: center; 
-  color: #fff; 
- } 
 
+.button-grid {
+  margin-top: 50px;
+}
 
+.sign-up-button {
+  background: transparent;
+  border-color: var(--ion-color-peach-light);
+  color: var(--ion-color-peach);
+  border-radius: 30px;
+  border-width: 2px;
+  height: 50px;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.sign-in-button {
+  background: linear-gradient(to right, var(--ion-color-peach-light), var(--ion-color-peach));
+  color: #fff;
+  border-radius: 30px;
+  height: 50px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(214, 80, 255, 0.3);
+  margin-left: 5px;
+}
+
+.custom-footer {
+  ion-toolbar {
+    --background: transparent;
+    padding: 0 20px;
+    --border-width: 0;
+  }
+
+  .footer-text {
+    font-size: 0.75em;
+    text-align: center;
+    color: #aaa;
+    padding: 10px 0;
+  }
+
+}

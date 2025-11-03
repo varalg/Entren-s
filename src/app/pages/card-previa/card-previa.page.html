@@ -9,31 +9,32 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Título</ion-label>
-          <ion-input [(ngModel)]="titulo" placeholder="Ex: Meu amor, minha vida"></ion-input>
+          <ion-input [(ngModel)]="titulo" placeholder="Ex: Meu amor, minha vida"> </ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Mensagem</ion-label>
-          <ion-textarea [(ngModel)]="mensagem" placeholder="Escreva sua mensagem aqui..."></ion-textarea>
+          <ion-textarea [(ngModel)]="mensagem" placeholder="Escreva sua mensagem aqui..."> </ion-textarea>
         </ion-item>
 
         <ion-item>
           <ion-label position="floating">Versículo ou frase</ion-label>
-          <ion-textarea [(ngModel)]="versiculo" placeholder="Ex: 'O amor é paciente e bondoso...'"></ion-textarea>
+          <ion-textarea [(ngModel)]="versiculo" placeholder="Ex: 'O amor é paciente e bondoso...'"> </ion-textarea>
         </ion-item>
       </ion-card-content>
+
     </ion-card>
 
     <div class="preview">
       <h1 class="titulo">Seu título aparecerá aqui</h1>
 
       <p class="mensagem">
-        {Sua mensagem personalizada será exibida aqui}
-        <br /><br />
+        Sua mensagem personalizada será exibida aqui
+        <br>
+        <br>
         <i>versiculo</i>
       </p>
 
-      <!-- VÍDEO -->
       <div class="video-container">
         <video controls>
           <source [src]="videoUrl" type="video/mp4" />
@@ -41,12 +42,10 @@
         </video>
       </div>
 
-      <!-- TEXTO DE INSTRUÇÃO -->
       <p class="instrucao">
         Dê play na música abaixo para acompanhar a homenagem 
       </p>
 
-      <!-- SPOTIFY PLAYER -->
       <div class="spotify-container">
         <iframe
           [src]="spotifyUrl"
@@ -56,6 +55,7 @@
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
         </iframe>
       </div>
+
     </div>
 
   </div>

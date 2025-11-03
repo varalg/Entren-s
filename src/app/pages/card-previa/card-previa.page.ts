@@ -3,6 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   standalone: true,
   selector: 'app-card-previa',
@@ -14,6 +15,6 @@ export class CardPreviaPage {
   titulo: string = '';
   mensagem: string = '';
   versiculo: string = '';
-  videoUrl = 'assets/video.mp4';
-  spotifyUrl = 'https://open.spotify.com/embed/track/ID_DA_MUSICA';
-}
+  videoUrl: string = '';
+  spotifyUrl: string = '';
+} 
