@@ -36,7 +36,6 @@ export class HomenagensPage {
   }
 
   buscar() {
-    // função opcional, a filtragem já acontece automaticamente
   }
 
   verHomenagem(homenagem: any) {

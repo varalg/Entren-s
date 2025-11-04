@@ -17,7 +17,7 @@ import {
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
   standalone: true,
-  imports: [IonRouterLink, 
+  imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -28,7 +28,6 @@ import {
     IonTitle,
     IonHeader,
     IonToolbar,
-    IonRouterLink,
     IonFooter
   ],
 })

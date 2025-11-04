@@ -17,7 +17,7 @@ import {
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonRouterLink, 
+  imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -29,7 +29,6 @@ import {
     IonFooter,
     IonHeader,
     IonToolbar,
-    IonRouterLink
   ],
 })
 export class LoginPage {

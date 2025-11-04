@@ -10,7 +10,7 @@
     <img src="assets/logo.png" alt="Logo" class="logo" />
 
     <!-- Título -->
-    <h2>Bem-vindo(a) de volta!</h2>
+    <h2>Bem-vindo!</h2>
     <p>Faça login para continuar</p>
 
     <!-- Formulário -->
@@ -33,20 +33,18 @@
         </ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit">Entrar</ion-button>
+      <ion-button expand="block" type="submit">
+        Entrar
+      </ion-button>
 
       <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
-    </form>
 
-    <!-- Link para cadastro fora do form -->
+    </form>
     <div class="extra-links">
-      <ion-router-link routerLink="/cadastro">
-        Criar conta
-      </ion-router-link>
-    </div>
+        <a routerLink="/cadastro">Criar conta</a>
+      </div>
   </div>
 </ion-content>
-
 <ion-footer>
   <ion-toolbar color="tertiary">
     <ion-title class="footer-text">
