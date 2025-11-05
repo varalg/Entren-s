@@ -21,6 +21,14 @@ export const routes: Routes = [
     path: 'homenagens',
     loadComponent: () => import('./homenagens/homenagens.page').then( m => m.HomenagensPage)
   },
+  {
+    path: 'plano',
+    loadComponent: () => import('./plano/plano.page').then( m => m.PlanoPage)
+  },
+  {
+    path: 'previa-card',
+    loadComponent: () => import('./previa-card/previa-card.page').then( m => m.PreviaCardPage)
+  },
 
   
 ];
