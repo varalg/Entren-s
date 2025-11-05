@@ -1,21 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
   IonHeader,
-  IonToolbar,
   IonTitle,
+  IonToolbar,
   IonItem,
-  IonInput,
-  IonIcon,
   IonButton,
-  IonFooter,
-  IonLabel,
-  IonGrid,
-  IonRow,
-  IonCol // Adicionado para suportar o layout de grid
-} from '@ionic/angular/standalone';
+  IonInput,
+  IonFooter, IonRouterLink } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-login',
@@ -26,61 +21,51 @@ import {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    IonButton,
+    IonItem,
     IonContent,
+    IonInput,
+    IonTitle,
+    IonFooter,
     IonHeader,
     IonToolbar,
-    IonTitle,
-    IonItem,
-    IonInput,
-    IonIcon,
-    IonButton,
-    IonFooter,
-    IonLabel,
-    IonGrid, 
-    IonRow,
-    IonCol,
-  ]
+  ],
 })
 export class LoginPage {
-  mostrarSenha: boolean = false;
   loginForm: FormGroup;
-  mensagem: string = '';
-  mensagemCor: string = '';
+  mensagem = '';
+  mensagemCor = '';
 
   usuarioValido = {
     email: 'teste@exemplo.com',
     senha: '123456',
-    nome: 'Usuário Teste'
+    nome: 'Usuário',
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required]
+      senha: ['', Validators.required],
     });
   }
 
   login() {
-    if (this.loginForm.invalid) {
-      this.mensagem = 'Preencha todos os campos corretamente!';
+    const { email, senha } = this.loginForm.value;
+
+    if (!email || !senha) {
+      this.mensagem = 'Preencha todos os campos!';
       this.mensagemCor = 'red';
       return;
     }
-    
-    const { email, senha } = this.loginForm.value;
 
     if (email === this.usuarioValido.email && senha === this.usuarioValido.senha) {
-      this.mensagem = `Bem-vindo ${this.usuarioValido.nome || email}!`;
+      this.mensagem = `Bem-vindo(a), ${this.usuarioValido.nome}!`;
       this.mensagemCor = 'green';
-    }
-     else {
+      setTimeout(() => this.router.navigate(['/homenagens']), 1000);
+      this.loginForm.reset();
+    } else {
       this.mensagem = 'E-mail ou senha incorretos!';
       this.mensagemCor = 'red';
     }
   }
-
-  alternarExibicaoSenha() {
-    this.mostrarSenha = !this.mostrarSenha;
-  }
-
 }

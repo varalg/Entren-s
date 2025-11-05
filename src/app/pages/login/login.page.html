@@ -1,58 +1,57 @@
-<ion-content class="ion-padding background-gradient">
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div class="header-onda">
-    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#d650ff" fill-opacity="1"
-        d="M0,160L60,154.7C120,149,240,139,360,154.7C480,171,600,213,720,213.3C840,213,960,171,1080,154.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
-      </path>
-    </svg>
-  </div>
-
+<ion-content class="login-content">
   <div class="login-container">
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="Logo" class="logo" />
 
-    <div class="text-area">
-      <h1>Seja Bem Vindo!</h1>
-      <p>Eternize conosco os seus sentimentos.</p>
-      <div class="underline"></div>
-    </div>
+    <!-- Título -->
+    <h2>Bem-vindo!</h2>
+    <p>Faça login para continuar</p>
 
-    <form [formGroup]="loginForm">
-      <ion-item lines="none" class="custom-input">
-        <ion-label position="stacked">E-mail</ion-label>
+    <!-- Formulário -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item fill="solid">
         <ion-input
           type="email"
           formControlName="email"
-          placeholder="seu@email.com"
-          name="email">
+          placeholder="Digite seu e-mail"
+          labelPlacement="floating">
         </ion-input>
       </ion-item>
 
-      <ion-item lines="none" class="custom-input">
-        <ion-label position="stacked">Senha</ion-label>
+      <ion-item fill="solid">
         <ion-input
-          [type]="mostrarSenha ? 'text' : 'password'"
+          type="password"
           formControlName="senha"
-          placeholder="********"
-          name="senha">
+          placeholder="Digite sua senha"
+          labelPlacement="floating">
         </ion-input>
-
-        <ion-button
-          fill="clear"
-          slot="end"
-          class="password-toggle-button"
-          (click)="alternarExibicaoSenha()">
-          <ion-icon
-            [name]="mostrarSenha ? 'eye-off-outline' : 'eye-outline'"
-            class="password-toggle-icon">
-          </ion-icon>
-        </ion-button>
       </ion-item>
 
-      <p *ngIf="mensagem" [style.color]="mensagemCor" class="ion-text-center ion-padding-top">
-        {{ mensagem }}
-      </p>
+      <ion-button expand="block" type="submit">
+        Entrar
+      </ion-button>
 
-      <div class="forgot-password-link">
+      <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
+
+    </form>
+    <div class="extra-links">
+        <a routerLink="/cadastro">Criar conta</a>
+      </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>      <div class="forgot-password-link">
         <a href="#">Esqueceu a sua senha?</a>
       </div>
 

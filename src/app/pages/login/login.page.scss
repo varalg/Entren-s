@@ -1,78 +1,77 @@
-:root {
-  --ion-color-peach: #d650ff;
-  --ion-color-peach-light: #ffb899;
-  --ion-background-color: #ffffff;
-  --ion-color-tertiary: var(--ion-color-peach);
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-toolbar-background: linear-gradient(135deg, var(--ion-color-peach-light), var(--ion-color-peach));
-  --ion-toolbar-color: #e75858;
-}
-
-ion-content {
-  --background: var(--ion-background-color);
-  border-radius: 30px;
-  margin: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(74, 70, 82, 0.05);
-  position: relative;
-}
-
-.header-onda {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  overflow: hidden;
-  z-index: 0;
-
-  svg {
-    display: block;
-    width: 100%;
-    height: 200px;
-  }
+.login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #f8f6ff; /* fundo lilás bem claro */
 }
 
 .login-container {
-  padding: 0 20px;
-  position: relative;
-  z-index: 1;
-  margin-top: 160px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  padding: 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.text-area {
-  margin-bottom: 40px;
-  color: #9a5cc4;
-
-  h1 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 2.2em;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: #55387a;
-  }
-
-  p {
-    color: #a265be;
-    margin-bottom: 15px;
-    font-size: 0.9em;
-  }
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
 }
 
-.underline {
-  width: 50px;
-  height: 3px;
-  background-color: var(--ion-color-peach-light);
-  border-radius: 5px;
+h2 {
+  margin: 10px 0 5px;
+  color: #4b0082;
 }
 
-.custom-input {
-  --inner-padding-end: 0;
-  --padding-start: 0;
-  --inner-border-width: 0;
-  background: transparent;
-  margin-bottom: 25px;
+p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
 
+ion-item {
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+ion-button {
+  --background: #7a3ef3;
+  --color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.mensagem {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.extra-links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.extra-links a {
+  color: #7a3ef3;
+  text-decoration: none;
+}
+
+.fancy-header {
+  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  height: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.footer-text {
+  font-size: 10px;
+  text-align: center;
+  color: #fff;
+}
   ion-label {
     font-weight: 600;
     color: #555;
@@ -85,7 +84,6 @@ ion-content {
     font-weight: 400;
     padding-top: 10px !important;
   }
-}
 
 .password-toggle-button {
   --padding-end: 0;
