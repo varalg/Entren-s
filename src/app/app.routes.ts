@@ -13,7 +13,8 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./pages/Login/login.page').then( m => m.LoginPage)
-  },  {
+  },
+  {
     path: 'cadastro',
     loadComponent: () => import('./cadastro/cadastro.page').then( m => m.CadastroPage)
   },
@@ -27,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'previa-card',
-    loadComponent: () => import('./previa-card/previa-card.page').then( m => m.PreviaCardPage)
+    loadComponent: () => import('./previa-card/previa-card.page').then( m => m.CardPreviaPage)
   },
 
   

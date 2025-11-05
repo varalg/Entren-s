@@ -1,13 +1,62 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>previa-card</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="card-previa-page" fullscreen>
+  <div class="container">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">previa-card</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card class="editor">
+      <ion-card-header>
+        <ion-card-title>Personalize sua homenagem 💌</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input [(ngModel)]="titulo" placeholder="Ex: Meu amor, minha vida"> </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Mensagem</ion-label>
+          <ion-textarea [(ngModel)]="mensagem" placeholder="Escreva sua mensagem aqui..."> </ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Versículo ou frase</ion-label>
+          <ion-textarea [(ngModel)]="versiculo" placeholder="Ex: 'O amor é paciente e bondoso...'"> </ion-textarea>
+        </ion-item>
+      </ion-card-content>
+
+    </ion-card>
+
+    <div class="preview">
+      <h1 class="titulo">Seu título aparecerá aqui</h1>
+
+      <p class="mensagem">
+        Sua mensagem personalizada será exibida aqui
+        <br>
+        <br>
+        <i>versiculo</i>
+      </p>
+
+      <div class="video-container">
+        <video controls>
+          <source [src]="videoUrl" type="video/mp4" />
+          Seu navegador não suporta o vídeo.
+        </video>
+      </div>
+
+      <p class="instrucao">
+        Dê play na música abaixo para acompanhar a homenagem 
+      </p>
+
+      <div class="spotify-container">
+        <iframe
+          [src]="spotifyUrl"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+      </div>
+
+    </div>
+
+  </div>
 </ion-content>

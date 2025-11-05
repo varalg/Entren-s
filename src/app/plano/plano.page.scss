@@ -1,0 +1,102 @@
+/* ===== Plano Page Styling ===== */
+
+/* Fundo da página com degradê roxo suave */
+.plano-content {
+  --background: linear-gradient(to bottom, #f5f0fa, #e6d6f1);
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Onda no topo */
+.wave-container {
+  height: 150px;
+  background: linear-gradient(135deg, #c8a2f6, #a67cf0);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+}
+
+/* Título abaixo da onda */
+.page-title-below-wave {
+  text-align: center;
+  margin: -60px 0 20px 0;
+}
+
+.page-title-below-wave h1 {
+  font-size: 2rem;
+  color: #5a2d82; /* tom roxo escuro */
+  font-weight: 600;
+}
+
+/* Grid dos planos */
+.plano-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 0 20px 40px 20px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards estilizados */
+.card-plano-estilizado {
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(90, 45, 130, 0.15);
+  background: #fffafc;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(90, 45, 130, 0.25);
+  }
+
+  ion-card-header {
+    text-align: center;
+  }
+
+  ion-card-title {
+    color: #7a52c9; /* lilás escuro */
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  ion-card-content {
+    text-align: center;
+    color: #5a2d82; /* roxo delicado */
+    p {
+      margin-bottom: 10px;
+    }
+
+    ion-note {
+      display: block;
+      font-size: 1.2rem;
+      color: #8f68d1;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/* Botões delicados */
+.btn-lilas {
+  --background: #b49df5;
+  --color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+
+  &:hover {
+    --background: #9c7de8;
+  }
+}
+
+.btn-rosa {
+  --background: #f1b3f3;
+  --color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+
+  &:hover {
+    --background: #e58ae1;
+  }
+}
