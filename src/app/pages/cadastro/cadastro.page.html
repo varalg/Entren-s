@@ -1,76 +1,59 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
-    <ion-title>Criar Conta</ion-title>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-content">
-
-  <div class="login-container">
+<ion-content class="cadastro-content">
+  <div class="cadastro-container">
     <!-- Logo -->
     <img src="assets/logo.png" alt="Logo" class="logo" />
-    
 
-    <!-- Formulário de Cadastro -->
-    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+    <!-- Título -->
+    <h2>Crie sua conta</h2>
+    <p>Preencha os campos abaixo</p>
+
+    <!-- Formulário -->
+    <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
 
       <ion-item fill="solid">
-        <ion-input 
-          type="text" 
-          formControlName="nome" 
-          placeholder="Digite seu nome completo">
+        <ion-input
+          type="email"
+          formControlName="email"
+          placeholder="Digite seu e-mail"
+          labelPlacement="floating">
         </ion-input>
       </ion-item>
 
       <ion-item fill="solid">
-        <ion-input 
-          type="email" 
-          formControlName="email" 
-          placeholder="Digite seu e-mail">
+        <ion-input
+          type="password"
+          formControlName="senha"
+          placeholder="Digite sua senha"
+          labelPlacement="floating">
         </ion-input>
       </ion-item>
 
       <ion-item fill="solid">
-        <ion-input 
-          type="tel" 
-          formControlName="telefone" 
-          placeholder="Digite seu telefone">
+        <ion-input
+          type="password"
+          formControlName="confirmarSenha"
+          placeholder="Confirme sua senha"
+          labelPlacement="floating">
         </ion-input>
       </ion-item>
 
-      <ion-item fill="solid">
-        <ion-input 
-          type="password" 
-          formControlName="senha" 
-          placeholder="Digite sua senha">
-        </ion-input>
-      </ion-item>
+      <ion-button expand="block" type="submit">Cadastrar</ion-button>
 
-      <ion-item fill="solid">
-        <ion-input 
-          type="password" 
-          formControlName="confirmaSenha" 
-          placeholder="Confirme sua senha">
-        </ion-input>
-      </ion-item>
-
-      <!-- Erro de senha -->
-      <p *ngIf="cadastroForm.hasError('notMatching') && cadastroForm.touched" style="color: #c00; margin: 8px 0;">
-        As senhas não conferem.
-      </p>
-       <ion-button expand="block" type="submit">
-        cadastrar
-      </ion-button>
+      <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
 
       <div class="extra-links">
-        <a></a>
+        <a routerLink="/login">Já tem uma conta? Entrar</a>
       </div>
     </form>
   </div>
-
 </ion-content>
 
-<!-- Footer -->
 <ion-footer>
   <ion-toolbar color="tertiary">
     <ion-title class="footer-text">

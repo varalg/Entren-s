@@ -1,50 +1,68 @@
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
-import {  IonContent, IonHeader, IonToolbar, IonTitle, IonItem, IonInput, IonButton, IonFooter, } from '@ionic/angular/standalone';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonItem,
+  IonButton,
+  IonInput,
+  IonFooter, IonRouterLink } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
   styleUrls: ['./cadastro.page.scss'],
   standalone: true,
-  imports: [IonFooter, ReactiveFormsModule, RouterModule,  IonContent, IonHeader, IonToolbar, IonTitle, IonItem, IonInput, IonButton, IonToolbar,CommonModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IonButton,
+    IonItem,
+    IonContent,
+    IonInput,
+    IonTitle,
+    IonHeader,
+    IonToolbar,
+    IonFooter
+  ],
 })
-export class CadastroPage implements OnInit {
+export class CadastroPage {
+  cadastroForm: FormGroup;
+  mensagem: string = '';
+  mensagemCor: string = '';
 
-  cadastroForm!: FormGroup; // <- aqui declaramos o formulário
-
-  constructor(private fb: FormBuilder, private router: Router) {}
-
-  ngOnInit() {
-    // Inicializamos o formulário com os campos e validações
-    this.cadastroForm = this.fb.group(
-      {
-        nome: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        telefone: ['', Validators.required],
-        senha: ['', [Validators.required, Validators.minLength(6)]],
-        confirmaSenha: ['', Validators.required]
-      },
-      { validators: this.passwordsMatchValidator } // validação de senhas iguais
-    );
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.cadastroForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required],
+      confirmarSenha: ['', Validators.required]
+    });
   }
 
-  // Validação customizada para verificar se senha e confirmaSenha são iguais
-  private passwordsMatchValidator(group: FormGroup | any) {
-    const pw = group.get('senha')?.value;
-    const confirm = group.get('confirmaSenha')?.value;
-    return pw === confirm ? null : { notMatching: true };
-  }
+  cadastrar() {
+    const { email, senha, confirmarSenha } = this.cadastroForm.value;
 
-  onSubmit() {
-    if (this.cadastroForm.invalid) {
-      this.cadastroForm.markAllAsTouched();
+    if (!email || !senha || !confirmarSenha) {
+      this.mensagem = 'Preencha todos os campos!';
+      this.mensagemCor = 'red';
       return;
     }
 
-    console.log('Cadastro OK:', this.cadastroForm.value);
-    this.router.navigate(['/login']); // navega para login após cadastro
+    if (senha !== confirmarSenha) {
+      this.mensagem = 'As senhas não conferem!';
+      this.mensagemCor = 'red';
+      return;
+    }
+
+    this.mensagem = 'Cadastro realizado com sucesso!';
+    this.mensagemCor = 'green';
+    this.cadastroForm.reset();
+
+    setTimeout(() => this.router.navigate(['/login']), 1000);
   }
 }
