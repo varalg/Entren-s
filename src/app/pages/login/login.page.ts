@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
@@ -10,7 +16,12 @@ import {
   IonItem,
   IonButton,
   IonInput,
-  IonFooter, IonRouterLink } from '@ionic/angular/standalone';
+  IonFooter,
+  IonRouterLink,
+  IonGrid,
+  IonRow,
+  IonCol
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +32,8 @@ import {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink,
+    // Ionic components
     IonButton,
     IonItem,
     IonContent,
@@ -29,6 +42,10 @@ import {
     IonFooter,
     IonHeader,
     IonToolbar,
+    IonGrid,     // ✅ adicionados
+    IonRow,      // ✅ adicionados
+    IonCol,      // ✅ adicionados
+    IonRouterLink
   ],
 })
 export class LoginPage {

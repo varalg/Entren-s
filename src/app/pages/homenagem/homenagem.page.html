@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="homenagem-content">
+  <div class="content-container">
+
+    <!-- Barra de busca -->
+    <div class="search-bar">
+      <ion-input placeholder="Pesquisar homenagem..." [(ngModel)]="termoBusca"></ion-input>
+      <ion-button (click)="buscar()">Buscar</ion-button>
+    </div>
+
+    <!-- Lista de homenagens -->
+    <div class="homenagens-list">
+      <div class="card" *ngFor="let homenagem of homenagemFiltradas()">
+        <img [src]="homenagem.imagem" alt="Imagem da homenagem" />
+        <h3>{{ homenagem.titulo }}</h3>
+        <p>{{ homenagem.texto }}</p>
+        <ion-button expand="block" (click)="verHomenagem(homenagem)">Visualizar</ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

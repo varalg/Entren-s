@@ -33,32 +33,16 @@
         </ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit">
-        Entrar
-      </ion-button>
-
       <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
 
-    </form>
-    <div class="extra-links">
-        <a routerLink="/cadastro">Criar conta</a>
-      </div>
-  </div>
-</ion-content>
-<ion-footer>
-  <ion-toolbar color="tertiary">
-    <ion-title class="footer-text">
-      © 2025 App Entre-nós. Todos os direitos reservados.
-    </ion-title>
-  </ion-toolbar>
-</ion-footer>      <div class="forgot-password-link">
+      <div class="forgot-password-link">
         <a href="#">Esqueceu a sua senha?</a>
       </div>
 
       <ion-grid class="button-grid">
         <ion-row>
           <ion-col size="6" class="ion-no-padding">
-            <ion-button expand="block" fill="outline" class="sign-up-button">
+            <ion-button expand="block" fill="outline" class="sign-up-button" routerLink="/cadastro">
               CADASTRAR-SE
             </ion-button>
           </ion-col>
@@ -66,7 +50,7 @@
             <ion-button
               expand="block"
               class="sign-in-button"
-              (click)="login()"
+              type="submit"
               [disabled]="loginForm.invalid">
               ENTRAR
             </ion-button>
@@ -74,11 +58,15 @@
         </ion-row>
       </ion-grid>
     </form>
+
+    <div class="extra-links">
+      <a routerLink="/cadastro">Criar conta</a>
+    </div>
   </div>
 </ion-content>
 
 <ion-footer class="custom-footer">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title class="footer-text">
       © 2025 App Entre-nós. Todos os direitos reservados.
     </ion-title>
