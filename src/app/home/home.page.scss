@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #f8f6ff; 
+  background: linear-gradient(to bottom, #F8F6F2, #265C63); 
   height: 100vh;
 
   #container {
@@ -20,13 +20,13 @@
     .welcome-title {
       font-size: 28px;
       font-weight: bold;
-      color: #4b0082;
+      color: #265C63; /* verde petróleo */
       margin-bottom: 10px;
     }
 
     .welcome-subtitle {
       font-size: 16px;
-      color: #6a1b9a;
+      color: #2F6F77; /* verde suave da logo */
       margin-bottom: 50px;
     }
 
@@ -36,30 +36,35 @@
       gap: 20px;
 
       ion-button {
-        --background: #7a3ef3;
-        --color: #fff;
+        --background: #265C63; /* botão cor da logo */
+        --color: #FFFFFF;
         font-weight: bold;
         border-radius: 12px;
         width: 120px;
       }
 
       ion-button[color="primary"][fill="outline"] {
-        --border-color: #7a3ef3;
-        --color: #7a3ef3;
+        --border-color: #265C63;
+        --color: #265C63;
         --background: transparent;
       }
     }
   }
 }
 
+/* Header com detalhe rosa queimado + verde da logo */
 .fancy-header {
-  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  --background: linear-gradient(135deg, #C9A3A1, #265C63);
   height: 60px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+.footer-bar {
+  --background: #c2f1f1bb; /* bege suave da logo */
+  --color: #265C63;      /* verde petróleo */
+  text-align: center;
 }
 
 .footer-text {
   font-size: 10px;
-  text-align: center;
-  color: #fff;
+  color: #265C63;
 }

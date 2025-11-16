@@ -28,8 +28,13 @@ export const routes: Routes = [
   },
   {
     path: 'previa-card',
-    loadComponent: () => import('./previa-card/previa-card.page').then( m => m.CardPreviaPage)
+    loadComponent: () => import('./previa-card/previa-card.page').then( m => m.PreviaCardPage)
   },
+  {
+    path: 'escolher-homenagem',
+    loadComponent: () => import('./escolher-homenagem/escolher-homenagem.page').then( m => m.EscolherHomenagemPage)
+  },
+
 
   
 ];

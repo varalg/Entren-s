@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content">
+  <div class="login-container">
+    <!-- Logo -->
+    <img src="assets/logo-2.png" alt="Logo" class="logo" />
+
+    <!-- Título -->
+    <h1 class="titulo">Escolha o tipo de homenagem</h1>
+
+    <div class="container">
+      <!-- Card: Modelo pronto -->
+      <div class="card" (click)="homenagens()">
+        <ion-icon name="gift-outline"></ion-icon>
+        <h2>Modelo Pronto</h2>
+      </div>
+      <!-- Card: Customizar -->
+      <div class="card" (click)="previaCard()">
+        <ion-icon name="create-outline"></ion-icon>
+        <h2>Customizar</h2>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-bar">
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

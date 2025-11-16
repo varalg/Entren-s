@@ -1,105 +1,147 @@
+/* Fundo e container principal */
 .homenagens-content {
-  background-color: #f0f2f5;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  text-align: center;
+  min-height: 100vh;
+  --background: linear-gradient(to bottom, #F8F6F2, #265C63);
+  font-family: 'Helvetica Neue', sans-serif;
   padding: 20px;
-
-  .content-container {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  .search-bar {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-    width: 100%;
-
-    ion-input {
-      flex: 1;
-      max-width: 300px;
-      height: 35px;
-      border-radius: 8px;
-      padding: 0 14px;
-      border: 1px solid #d1c4e9;
-      font-size: 14px;
-    }
-
-    ion-button {
-      flex: 0 0 auto;
-      width: 80px;
-      height: 35px;
-      --background: #7a3ef3;
-      --color: #fff;
-      border-radius: 8px;
-      font-size: 13px;
-      padding: 0;
-    }
-  }
-
-  .homenagens-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 15px;
-      text-align: center;
-      width: 100%;
-
-      img {
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 10px;
-      }
-
-      h3 {
-        color: #7a3ef3;
-        margin: 10px 0 5px;
-      }
-
-      p {
-        color: #555;
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-
-      ion-button {
-        --background: #7a3ef3;
-        --color: #fff;
-        font-weight: bold;
-        border-radius: 8px;
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-    }
-  }
 }
+
+.content-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 20px;
+}
+
+/* Barra de busca */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-bar ion-input {
+  flex: 1;
+  height: 35px;
+  border-radius: 8px;
+  padding: 0 14px;
+  border: 1px solid #d1c4e9;
+  font-size: 14px;
+  --highlight-color-valid: black;
+}
+
+.search-bar ion-button {
+  width: 80px;
+  height: 35px;
+  --background: #265C63;
+  --color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0;
+}
+
+/* Lista de cards de homenagens */
+.homenagens-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.homenagens-list .card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.homenagens-list .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.homenagens-list .card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.homenagens-list .card h3 {
+  color: #265C63;
+  margin: 10px 0 5px;
+  font-size: 16px;
+}
+
+.homenagens-list .card p {
+  color: #2F6F77;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.homenagens-list .card ion-button {
+  --background: #265C63;
+  --color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+/* Header com logo no canto */
 .fancy-header {
-  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  --background: linear-gradient(135deg, #C9A3A1, #265C63);
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
   color: #fff;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.fancy-header ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+/* Logo no header */
+.header-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Footer */
+.footer-bar {
+  --background: linear-gradient(to right, #F8F6F2, #EAEAEA);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-text {
-  font-size: 7.5px;
+  font-size: 11px;
+  color: #265C63;
   text-align: center;
-  color: #fff;
-}
- ion-input {
-  --highlight-color-valid: black;  
-
 }

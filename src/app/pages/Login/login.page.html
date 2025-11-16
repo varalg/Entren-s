@@ -7,29 +7,27 @@
 <ion-content class="login-content">
   <div class="login-container">
     <!-- Logo -->
-    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <img src="assets/logo-2.png" alt="Logo" class="logo" />
 
-    <!-- Título -->
+    <!-- Título e descrição -->
     <h2>Bem-vindo!</h2>
     <p>Faça login para continuar</p>
 
     <!-- Formulário -->
     <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <ion-item fill="solid">
+      <ion-item>
         <ion-input
           type="email"
           formControlName="email"
-          placeholder="Digite seu e-mail"
-          labelPlacement="floating">
+          placeholder="Digite seu e-mail">
         </ion-input>
       </ion-item>
 
-      <ion-item fill="solid">
+      <ion-item>
         <ion-input
           type="password"
           formControlName="senha"
-          placeholder="Digite sua senha"
-          labelPlacement="floating">
+          placeholder="Digite sua senha">
         </ion-input>
       </ion-item>
 
@@ -37,16 +35,19 @@
         Entrar
       </ion-button>
 
+      <!-- Mensagem de erro ou sucesso -->
       <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
-
     </form>
+
+    <!-- Link para cadastro -->
     <div class="extra-links">
-        <a routerLink="/cadastro">Criar conta</a>
-      </div>
+      <a routerLink="/cadastro">Criar conta</a>
+    </div>
   </div>
 </ion-content>
+
 <ion-footer>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar class="footer-bar">
     <ion-title class="footer-text">
       © 2025 App Entre-nós. Todos os direitos reservados.
     </ion-title>

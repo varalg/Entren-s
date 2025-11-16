@@ -3,18 +3,18 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
-  standalone: true,
-  selector: 'app-card-previa',
+  selector: 'app-previa-card',
   templateUrl: './previa-card.page.html',
   styleUrls: ['./previa-card.page.scss'],
-  imports: [IonicModule, CommonModule, FormsModule,]
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule],
 })
-export class CardPreviaPage {
+export class PreviaCardPage {
   titulo: string = '';
   mensagem: string = '';
-  versiculo: string = '';
-  videoUrl: string = '';
+  imagemUrl: string = '';
   spotifyUrl: string = '';
-} 
+
+  constructor() {}
+}

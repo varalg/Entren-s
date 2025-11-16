@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonInput, IonFooter } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar, IonTitle, IonButton, IonInput, IonFooter, IonButtons } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-homenagens',

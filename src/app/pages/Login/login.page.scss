@@ -1,74 +1,105 @@
+/* ===== Login Page Styling ===== */
 .login-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  --background: #f8f6ff; /* fundo lilás bem claro */
+  justify-content: center; 
+  align-items: center;     
+  text-align: center;
+  height: 100vh;
+  --background: linear-gradient(to bottom, #F8F6F2, #265C63);
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
 .login-container {
   width: 100%;
-  max-width: 380px;
-  text-align: center;
-  padding: 25px;
-  background: #fff;
+  max-width: 500px;
+  padding: 20px;
+  background: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .logo {
-  width: 100px;
-  margin-bottom: 20px;
+  width: 120px;
+  margin-bottom: 10px;
 }
 
 h2 {
   margin: 10px 0 5px;
-  color: #4b0082;
+  color: #265C63; /* Verde petróleo */
+  font-weight: bold;
 }
 
 p {
-  color: #666;
+  color: #2F6F77; /* Verde suave */
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 ion-item {
   margin-bottom: 15px;
   border-radius: 8px;
+  --background: #F8F6F2; /* bege suave para inputs */
+  --color: #265C63;
+}
+
+ion-input::part(native) {
+  color: #265C63;
 }
 
 ion-button {
-  --background: #7a3ef3;
-  --color: #fff;
+  --background: #265C63; /* botão padrão */
+  --color: #FFFFFF;
   font-weight: bold;
   border-radius: 12px;
-  margin-top: 10px;
+  width: 100%;
+
+}
+
+ion-button[fill="outline"] {
+  --border-color: #265C63;
+  --color: #265C63;
+  --background: transparent;
 }
 
 .mensagem {
   font-size: 14px;
-  margin-top: 10px;
+  color: #2F6F77;
 }
 
 .extra-links {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   font-size: 13px;
 }
 
 .extra-links a {
-  color: #7a3ef3;
+  color: #265C63;
   text-decoration: none;
+  font-weight: bold;
 }
 
+/* Header (igual ao home) */
 .fancy-header {
-  --background: linear-gradient(135deg, #7a3ef3, #7e23b6);
+  --background: linear-gradient(135deg, #C9A3A1, #265C63); 
   height: 60px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  color: #FFFFFF;
+}
+
+/* Footer com mesmo estilo */
+.footer-bar {
+  --background: #F8F6F2;
+  --color: #265C63;
+  text-align: center;
 }
 
 .footer-text {
   font-size: 10px;
-  text-align: center;
-  color: #fff;
+  color: #265C63;
 }

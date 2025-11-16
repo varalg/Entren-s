@@ -1,75 +1,165 @@
+/* Fundo e container principal */
 .card-previa-page {
-  --background: #1f0438;
-  color: #fff;
-
-  .container {
-    max-width: 600px;
-    margin: auto;
-    padding: 16px;
-  }
-
-  ion-card.editor {
-    margin-bottom: 24px;
-    background: #1c1c1c;
-    color: #fff;
-
-    ion-card-title {
-      color: #ff6b81;
-      font-weight: bold;
-    }
-
-    ion-item {
-      --background: transparent;
-      --color: #fff;
-    }
-
-    ion-input, ion-textarea {
-      color: #fff;
-    }
-  }
-
-  .preview {
-    background: #603770;
-    border-radius: 12px;
-    border: 1px solid #aa05a2;
-    box-shadow: 0 0 15px rgba(150, 2, 100, 0.849);
-    text-align: center;
-    padding: 20px;
-  }
-
-  .titulo {
-    font-family: 'Great Vibes', cursive;
-    color: #ac61dd;
-    font-size: 2rem;
-    margin-bottom: 12px;
-  }
-
-  .mensagem {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 24px;
-  }
-
-  .video-container {
-    margin-bottom: 16px;
-
-    video {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid #333;
-    }
-  }
-
-  .instrucao {
-    font-size: 0.9rem;
-    color: #ee9797;
-    margin-bottom: 8px;
-  }
-
-  .spotify-container {
-    border-radius: 10px;
-    overflow: hidden;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  --background: linear-gradient(to bottom, #F8F6F2, #A2CFCB);
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #265C63;
 }
 
+/* Container centralizado */
+.card-previa-page .container {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
+/* Header */
+.fancy-header {
+  --background: linear-gradient(135deg, #C9A3A1, #265C63);
+  height: 60px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fancy-header ion-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+
+/* Editor de homenagem */
+ion-card.editor {
+  background: #f9f9f9;
+  color: #265C63;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+ion-card.editor ion-card-title {
+  color: #265C63;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+ion-card.editor ion-item {
+  --background: #fff;
+  --color: #265C63;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+ion-card.editor ion-input,
+ion-card.editor ion-textarea {
+  color: #265C63;
+  font-size: 14px;
+}
+
+/* Preview da homenagem */
+.preview {
+  background: #E5F7F5;
+  border-radius: 16px;
+  border: 1px solid #A1D6D0;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  text-align: center;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.preview .titulo {
+  font-family: 'Great Vibes', cursive;
+  color: #1B4F4B;
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.preview .mensagem {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #265C63;
+  margin-bottom: 18px;
+}
+
+/* IMAGEM */
+.imagem-container {
+  width: 100%;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.imagem-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Spotify ou outro container embutido */
+.spotify-container {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+/* Instruções e textos auxiliares */
+.instrucao {
+  font-size: 0.9rem;
+  color: #2F6F77;
+  margin-bottom: 10px;
+}
+
+/* Botões */
+ion-button {
+  --background: #265C63;
+  --color: #fff;
+  font-weight: 600;
+  border-radius: 14px;
+  width: 100%;
+  margin-top: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+ion-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+ion-button[fill="outline"] {
+  --border-color: #265C63;
+  --color: #265C63;
+  --background: transparent;
+}
+
+/* Footer */
+.footer-bar {
+  --background: linear-gradient(to right, #F8F6F2, #E3F0EE);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: #265C63;
+  text-align: center;
+}

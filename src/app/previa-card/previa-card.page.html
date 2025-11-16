@@ -1,58 +1,50 @@
-<ion-content class="card-previa-page" fullscreen>
+<ion-header>
+  <ion-toolbar class="fancy-header">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-previa-page">
   <div class="container">
 
+    <!-- Editor de homenagem -->
     <ion-card class="editor">
-      <ion-card-header>
-        <ion-card-title>Personalize sua homenagem 💌</ion-card-title>
-      </ion-card-header>
+      <ion-card-title>Edite sua Homenagem</ion-card-title>
 
-      <ion-card-content>
-        <ion-item>
-          <ion-label position="floating">Título</ion-label>
-          <ion-input [(ngModel)]="titulo" placeholder="Ex: Meu amor, minha vida"> </ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-input placeholder="Título da homenagem" [(ngModel)]="titulo"></ion-input>
+      </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Mensagem</ion-label>
-          <ion-textarea [(ngModel)]="mensagem" placeholder="Escreva sua mensagem aqui..."> </ion-textarea>
-        </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Mensagem da homenagem" [(ngModel)]="mensagem"></ion-textarea>
+      </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Versículo ou frase</ion-label>
-          <ion-textarea [(ngModel)]="versiculo" placeholder="Ex: 'O amor é paciente e bondoso...'"> </ion-textarea>
-        </ion-item>
-      </ion-card-content>
+      <!-- Link da imagem -->
+      <ion-item>
+        <ion-input placeholder="Link da imagem (opcional)" [(ngModel)]="imagemUrl"></ion-input>
+      </ion-item>
+
+      <!-- Link do Spotify -->
+      <ion-item>
+        <ion-input placeholder="Link Spotify (opcional)" [(ngModel)]="spotifyUrl"></ion-input>
+      </ion-item>
 
     </ion-card>
 
+    <!-- Preview da homenagem -->
     <div class="preview">
-      <h1 class="titulo">Seu título aparecerá aqui</h1>
+      <h2 class="titulo">{{ titulo || 'Seu título aqui' }}</h2>
+      <p class="mensagem">{{ mensagem || 'Sua mensagem aparecerá aqui...' }}</p>
 
-      <p class="mensagem">
-        Sua mensagem personalizada será exibida aqui
-        <br>
-        <br>
-        <i>versiculo</i>
-      </p>
-
-      <div class="video-container">
-        <video controls>
-          <source [src]="videoUrl" type="video/mp4" />
-          Seu navegador não suporta o vídeo.
-        </video>
+      <!-- IMAGEM -->
+      <div class="imagem-container" *ngIf="imagemUrl">
+        <img [src]="imagemUrl" alt="Imagem da homenagem" />
       </div>
 
-      <p class="instrucao">
-        Dê play na música abaixo para acompanhar a homenagem 
-      </p>
-
-      <div class="spotify-container">
-        <iframe
-          [src]="spotifyUrl"
-          width="100%"
-          height="80"
-          frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      <!-- Spotify embed -->
+      <div class="spotify-container" *ngIf="spotifyUrl">
+        <iframe [src]="spotifyUrl | safeUrl" width="100%" height="80" frameborder="0"
+          allowtransparency="true" allow="encrypted-media">
         </iframe>
       </div>
 
@@ -60,3 +52,11 @@
 
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-bar">
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

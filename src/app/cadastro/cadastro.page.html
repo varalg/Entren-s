@@ -6,40 +6,38 @@
 
 <ion-content class="cadastro-content">
   <div class="cadastro-container">
+
     <!-- Logo -->
-    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <img src="assets/logo-2.png" alt="Logo" class="logo" />
 
     <!-- Título -->
     <h2>Crie sua conta</h2>
-    <p>Preencha os campos abaixo</p>
+    
 
     <!-- Formulário -->
     <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
 
-      <ion-item fill="solid">
+      <ion-item>
         <ion-input
           type="email"
           formControlName="email"
-          placeholder="Digite seu e-mail"
-          labelPlacement="floating">
+          placeholder="Digite seu e-mail">
         </ion-input>
       </ion-item>
 
-      <ion-item fill="solid">
+      <ion-item>
         <ion-input
           type="password"
           formControlName="senha"
-          placeholder="Digite sua senha"
-          labelPlacement="floating">
+          placeholder="Digite sua senha">
         </ion-input>
       </ion-item>
 
-      <ion-item fill="solid">
+      <ion-item>
         <ion-input
           type="password"
           formControlName="confirmarSenha"
-          placeholder="Confirme sua senha"
-          labelPlacement="floating">
+          placeholder="Confirme sua senha">
         </ion-input>
       </ion-item>
 
@@ -50,12 +48,13 @@
       <div class="extra-links">
         <a routerLink="/login">Já tem uma conta? Entrar</a>
       </div>
+
     </form>
   </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar class="footer-bar">
     <ion-title class="footer-text">
       © 2025 App Entre-nós. Todos os direitos reservados.
     </ion-title>
