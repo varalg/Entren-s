@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-previa-card',
@@ -16,5 +17,13 @@ export class PreviaCardPage {
   imagemUrl: string = '';
   spotifyUrl: string = '';
 
-  constructor() {}
+  sanitizedSpotifyUrl: SafeResourceUrl | null = null;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit() {}
+
+  ngDoCheck() {
+    this.sanitizedSpotifyUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.spotifyUrl);
+  }
 }
