@@ -1,29 +1,34 @@
 /* ===== Plano Page Styling ===== */
 
-/* Fundo da página com degradê roxo suave */
+/* Fundo da página com degradê suave */
 .plano-content {
-  --background: linear-gradient(to bottom, #f5f0fa, #e6d6f1);
+  --background: linear-gradient(to bottom, #e1f2f3, #005255);
   padding: 0;
   font-family: 'Helvetica Neue', sans-serif;
 }
 
-/* Onda no topo */
-.wave-container {
-  height: 150px;
-  background: linear-gradient(135deg, #c8a2f6, #a67cf0);
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+.header-fixo {
+  height: 60px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+
+  ion-toolbar {
+    --background: linear-gradient(135deg, #02a0b4, #02705e); /* aqui você altera o degradê */
+  }
 }
 
-/* Título abaixo da onda */
-.page-title-below-wave {
+/* Título da página fora do header */
+.page-title-container {
   text-align: center;
-  margin: -60px 0 20px 0;
+  margin: 20px 0;
 }
 
-.page-title-below-wave h1 {
-  font-size: 2rem;
-  color: #5a2d82; /* tom roxo escuro */
-  font-weight: 600;
+.page-title-container h1 {
+  font-size: 1.8rem; 
+  font-weight: 700;
+  color: #035e56; 
+  margin: 0;
 }
 
 /* Grid dos planos */
@@ -32,8 +37,10 @@
   grid-template-columns: 1fr;
   gap: 20px;
   padding: 0 20px 40px 20px;
+}
 
-  @media (min-width: 600px) {
+@media (min-width: 600px) {
+  .plano-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -41,62 +48,63 @@
 /* Cards estilizados */
 .card-plano-estilizado {
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(90, 45, 130, 0.15);
+  box-shadow: 0 8px 20px rgb(1, 172, 144);
   background: #fffafc;
   transition: transform 0.3s, box-shadow 0.3s;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(90, 45, 130, 0.25);
-  }
-
-  ion-card-header {
-    text-align: center;
-  }
-
-  ion-card-title {
-    color: #7a52c9; /* lilás escuro */
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  ion-card-content {
-    text-align: center;
-    color: #5a2d82; /* roxo delicado */
-    p {
-      margin-bottom: 10px;
-    }
-
-    ion-note {
-      display: block;
-      font-size: 1.2rem;
-      color: #8f68d1;
-      margin-bottom: 15px;
-    }
-  }
 }
 
-/* Botões delicados */
+.card-plano-estilizado:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgb(2, 163, 163);
+}
+
+.card-plano-estilizado ion-card-header {
+  text-align: center;
+}
+
+.card-plano-estilizado ion-card-title {
+  color: #019262;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.card-plano-estilizado ion-card-content {
+  text-align: center;
+  color: #008f8f;
+}
+
+.card-plano-estilizado ion-card-content p {
+  margin-bottom: 10px;
+}
+
+.card-plano-estilizado ion-card-content ion-note {
+  display: block;
+  font-size: 1.2rem;
+  color: #036366;
+  margin-bottom: 15px;
+}
+
+/* Botões personalizados (funcionam com expand="block" e fill="solid") */
 .btn-lilas {
-  --background: #b49df5;
-  --color: #fff;
+  --background: #0e8373 !important;
+  --color: #fff !important;
   border-radius: 12px;
   font-weight: 600;
   transition: 0.3s;
+}
 
-  &:hover {
-    --background: #9c7de8;
-  }
+.btn-lilas:hover {
+  --background: #0abb8f !important;
 }
 
 .btn-rosa {
-  --background: #f1b3f3;
-  --color: #fff;
+  --background:#078171 !important;
+  --color: #fff !important;
   border-radius: 12px;
   font-weight: 600;
   transition: 0.3s;
+}
 
-  &:hover {
-    --background: #e58ae1;
-  }
+.btn-rosa:hover {
+  --background: #06bea0 !important;
 }

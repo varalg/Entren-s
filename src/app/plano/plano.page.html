@@ -1,15 +1,13 @@
-<ion-header translucent="true">
-  <ion-toolbar color="transparent">
-    <!-- Sem título no header -->
+<ion-header class="header-fixo">
+  <ion-toolbar>
+    <!-- Header limpo, só o degradê definido pelo SCSS -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="plano-content" fullscreen>
-  <!-- Onda no topo -->
-  <div class="wave-container"></div>
 
-  <!-- Título abaixo da onda -->
-  <div class="page-title-below-wave">
+  <!-- Título da página fora do header -->
+  <div class="page-title-container">
     <h1>Escolha o seu plano ideal</h1>
   </div>
 
@@ -20,7 +18,7 @@
         <ion-card-title>Plano Básico</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Conforme usar...</p>
+        <p>Conforme usar</p>
         <ion-note>R$ 14,90</ion-note>
         <ion-button expand="block" class="btn-lilas">Assinar</ion-button>
       </ion-card-content>
@@ -31,10 +29,11 @@
         <ion-card-title>Plano Premium</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Uso Mensal...</p>
-        <ion-note>R$ 29,90</ion-note>
+        <p>Uso Mensal</p>
+        <ion-note>R$ 24,90</ion-note>
         <ion-button expand="block" class="btn-rosa">Assinar</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
+
 </ion-content>

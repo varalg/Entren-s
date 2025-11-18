@@ -29,12 +29,12 @@
 
 h2 {
   margin: 10px 0 5px;
-  color: #265C63; /* Verde petróleo */
+  color: #035e56; 
   font-weight: bold;
 }
 
 p {
-  color: #2F6F77; /* Verde suave */
+  color: #2F6F77; 
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -42,7 +42,7 @@ p {
 ion-item {
   margin-bottom: 15px;
   border-radius: 8px;
-  --background: #F8F6F2; /* bege suave para inputs */
+  --background: #F8F6F2; 
   --color: #265C63;
  
 }
@@ -52,7 +52,7 @@ ion-input::part(native) {
 }
 
 ion-button {
-  --background: #265C63; /* botão padrão */
+  --background:  #006e60; 
   --color: #FFFFFF;
   font-weight: bold;
   border-radius: 12px;
@@ -60,8 +60,8 @@ ion-button {
 }
 
 ion-button[fill="outline"] {
-  --border-color: #265C63;
-  --color: #265C63;
+  --border-color:  #035e56;
+  --color:  #035e56;
   --background: transparent;
 }
 
@@ -86,7 +86,7 @@ ion-button[fill="outline"] {
 
 /* Header (igual ao home) */
 .fancy-header {
-  --background: linear-gradient(135deg, #C9A3A1, #265C63); 
+  --background: linear-gradient(135deg, #02a0b4, #02705e); 
   height: 60px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   color: #FFFFFF;
