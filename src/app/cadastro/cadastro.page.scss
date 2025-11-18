@@ -1,105 +1,116 @@
-/* ===== Cadastro Page Styling ===== */
-.cadastro-content {
-  display: flex;
-  justify-content: center; 
-  align-items: center;     
-  text-align: center;
-  height: 100vh;
-  --background: linear-gradient(to bottom, #F8F6F2, #265C63);
+/* ===== Plano Page Styling ===== */
+
+/* Fundo da página com degradê suave */
+.plano-content {
+  --background: linear-gradient(to bottom, #e1f2f3, #005255);
+  padding: 0;
+  padding-top: 80px; /* espaço para o header fixo */
   font-family: 'Helvetica Neue', sans-serif;
 }
 
-.cadastro-container {
+/* ===== HEADER IGUAL AO DO CADASTRO ===== */
+.header-fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  background: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  z-index: 10;
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin: 10px 0 5px;
-  color: #035e56; 
-  font-weight: bold;
-}
-
-p {
-  color: #2F6F77; 
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-ion-item {
-  margin-bottom: 15px;
-  border-radius: 8px;
-  --background: #F8F6F2; 
-  --color: #265C63;
- 
-}
-
-ion-input::part(native) {
-  color: #265C63;
-}
-
-ion-button {
-  --background:  #006e60; 
-  --color: #FFFFFF;
-  font-weight: bold;
-  border-radius: 12px;
-  width: 100%;
-}
-
-ion-button[fill="outline"] {
-  --border-color:  #035e56;
-  --color:  #035e56;
-  --background: transparent;
-}
-
-.mensagem {
-  font-size: 14px;
-  color: #2F6F77;
-}
-
-.extra-links {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  font-size: 13px;
-}
-
-.extra-links a {
-  color: #265C63;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Header (igual ao home) */
-.fancy-header {
-  --background: linear-gradient(135deg, #02a0b4, #02705e); 
+.header-fixo ion-toolbar {
+  --background: linear-gradient(135deg, #02a0b4, #02705e); /* MESMO GRADIENTE DO CADASTRO */
   height: 60px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   color: #FFFFFF;
 }
 
-/* Footer com mesmo estilo */
-.footer-bar {
-  --background: #F8F6F2;
-  --color: #265C63;
+/* Título da página */
+.page-title-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.page-title-container h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #035e56;
+  margin: 0;
+}
+
+/* Grid dos planos */
+.plano-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 0 20px 40px 20px;
+}
+
+@media (min-width: 600px) {
+  .plano-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards estilizados */
+.card-plano-estilizado {
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgb(1, 172, 144);
+  background: #fffafc;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-plano-estilizado:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgb(2, 163, 163);
+}
+
+.card-plano-estilizado ion-card-header {
   text-align: center;
 }
 
-.footer-text {
-  font-size: 10px;
-  color: #265C63;
+.card-plano-estilizado ion-card-title {
+  color: #019262;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.card-plano-estilizado ion-card-content {
+  text-align: center;
+  color: #008f8f;
+}
+
+.card-plano-estilizado ion-card-content p {
+  margin-bottom: 10px;
+}
+
+.card-plano-estilizado ion-card-content ion-note {
+  display: block;
+  font-size: 1.2rem;
+  color: #036366;
+  margin-bottom: 15px;
+}
+
+/* Botões personalizados */
+.btn-lilas {
+  --background: #0e8373 !important;
+  --color: #fff !important;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-lilas:hover {
+  --background: #0abb8f !important;
+}
+
+.btn-rosa {
+  --background: #078171 !important;
+  --color: #fff !important;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-rosa:hover {
+  --background: #06bea0 !important;
 }
