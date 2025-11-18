@@ -1,14 +1,14 @@
 /* ===== Plano Page Styling ===== */
 
-/* Fundo */
+/* Fundo da página */
 .plano-content {
   --background: linear-gradient(to bottom, #F8F6F2, #265C63);
   font-family: 'Helvetica Neue', sans-serif;
   padding: 20px;
-  padding-top: 100px; /* espaço para o header igual às outras páginas */
+  padding-top: 100px; /* espaço para o header fixo */
 }
 
-/* ===== HEADER IGUAL AO DO CADASTRO ===== */
+/* ===== HEADER IGUAL AO CADASTRO ===== */
 .header-fixo {
   position: fixed;
   top: 0;
@@ -18,13 +18,41 @@
 }
 
 .header-fixo ion-toolbar {
-  --background: linear-gradient(135deg, #02a0b4, #02705e); /* mesmo degradê */
-  height: 60px;  /* mesma altura */
+  --background: linear-gradient(135deg, #02a0b4, #02705e);
+  height: 60px;
   color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* mesma sombra */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Título fora do header */
+/* ===== FOOTER IGUAL AO CADASTRO ===== */
+.footer-fixo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.footer-fixo ion-toolbar {
+  --background: #F8F6F2;
+  --color: #265C63;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.10);
+  padding: 0;
+}
+
+.footer-fixo p {
+  margin: 0;
+  font-size: 7px;
+  color: #265C63;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ===== Título fora do header ===== */
 .page-title-container {
   text-align: center;
   margin-bottom: 20px;
@@ -36,11 +64,12 @@
   color: #035e56;
 }
 
-/* Grid dos planos */
+/* ===== Grid dos planos ===== */
 .plano-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  padding-bottom: 70px; /* espaço para o footer fixo */
 }
 
 @media (min-width: 600px) {
@@ -49,7 +78,7 @@
   }
 }
 
-/* Cards dos planos */
+/* ===== Cards dos planos ===== */
 .card-plano-estilizado {
   border-radius: 20px;
   box-shadow: 0 8px 20px rgb(1, 172, 144);
@@ -77,13 +106,17 @@
   color: #008f8f;
 }
 
+.card-plano-estilizado ion-card-content p {
+  margin-bottom: 10px;
+}
+
 .card-plano-estilizado ion-card-content ion-note {
   font-size: 1.2rem;
   margin: 10px 0;
   color: #036366;
 }
 
-/* Botões */
+/* ===== Botões ===== */
 .btn-lilas {
   --background: #0e8373 !important;
   --color: #fff !important;
@@ -91,9 +124,17 @@
   font-weight: 600;
 }
 
+.btn-lilas:hover {
+  --background: #0abb8f !important;
+}
+
 .btn-rosa {
   --background: #078171 !important;
   --color: #fff !important;
   border-radius: 12px;
   font-weight: 600;
+}
+
+.btn-rosa:hover {
+  --background: #06bea0 !important;
 }

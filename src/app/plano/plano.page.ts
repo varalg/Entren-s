@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,15 +15,14 @@ import {
   IonCardTitle,
   IonCardContent,
   IonButton,
-  IonNote
-} from '@ionic/angular/standalone';
+  IonNote, IonFooter } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-plano',
   templateUrl: './plano.page.html',
   styleUrls: ['./plano.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonFooter, 
     CommonModule,
     FormsModule,
     IonContent,
