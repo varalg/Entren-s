@@ -13,6 +13,9 @@ import {
   IonFooter
 } from '@ionic/angular/standalone';
 
+import { auth } from '../../firebase-config'; // Firebase Auth
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.page.html',
@@ -45,14 +48,13 @@ export class CadastroPage {
     }, { validator: this.confirmarSenhas });
   }
 
-  // 🔒 Validação de senha dentro do grupo
   confirmarSenhas(group: FormGroup) {
     const senha = group.get('senha')?.value;
     const confirmar = group.get('confirmarSenha')?.value;
     return senha === confirmar ? null : { senhasDiferentes: true };
   }
 
-  cadastrar() {
+  cadastrar(): void {
     if (this.cadastroForm.invalid) {
       this.mensagem = 'Verifique os campos e tente novamente.';
       this.mensagemCor = 'red';
@@ -62,13 +64,34 @@ export class CadastroPage {
 
     const { email, senha } = this.cadastroForm.value;
 
-    // 🔜 Aqui futuramente você coloca o Firebase:
-    // this.authService.registrar(email, senha).then(...).catch(...);
+    // 🔥 Firebase Auth
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        // ✅ Arrow function mantém o 'this'
+        this.mensagem = 'Cadastro realizado com sucesso!';
+        this.mensagemCor = 'green';
+        this.cadastroForm.reset();
 
-    this.mensagem = 'Cadastro realizado com sucesso!';
-    this.mensagemCor = 'green';
-    this.cadastroForm.reset();
-
-    setTimeout(() => this.router.navigate(['/login']), 1200);
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1200);
+      })
+      .catch((error) => {
+        // ✅ Tratamento de erros do Firebase
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            this.mensagem = 'Este e-mail já está em uso.';
+            break;
+          case 'auth/invalid-email':
+            this.mensagem = 'E-mail inválido.';
+            break;
+          case 'auth/weak-password':
+            this.mensagem = 'Senha muito fraca (mínimo 6 caracteres).';
+            break;
+          default:
+            this.mensagem = 'Erro ao cadastrar: ' + error.message;
+        }
+        this.mensagemCor = 'red';
+      });
   }
 }

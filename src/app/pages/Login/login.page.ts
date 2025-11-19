@@ -13,6 +13,9 @@ import {
   IonFooter
 } from '@ionic/angular/standalone';
 
+import { auth } from '../../../firebase-config'; // Importa Firebase Auth
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -38,13 +41,6 @@ export class LoginPage {
   mensagemCor = '';
   carregando = false;
 
-  // ⚙️ Apenas para testes locais — depois o Firebase substituirá isso
-  usuarioValido = {
-    email: 'teste@exemplo.com',
-    senha: '123456',
-    nome: 'Usuário',
-  };
-
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -53,8 +49,6 @@ export class LoginPage {
   }
 
   async login() {
-    const { email, senha } = this.loginForm.value;
-
     if (this.loginForm.invalid) {
       this.mensagem = 'Preencha os campos corretamente.';
       this.mensagemCor = 'red';
@@ -62,24 +56,37 @@ export class LoginPage {
       return;
     }
 
+    const { email, senha } = this.loginForm.value;
     this.carregando = true;
 
     try {
-      // 🔜 Aqui futuramente entrará:
-      // await this.authService.login(email, senha);
+      // 🔥 Firebase Auth
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
 
-      if (email === this.usuarioValido.email && senha === this.usuarioValido.senha) {
-        this.mensagem = `Bem-vindo(a), ${this.usuarioValido.nome}!`;
-        this.mensagemCor = 'green';
-        setTimeout(() => this.router.navigate(['/escolher-homenagem']), 1200);
-        this.loginForm.reset();
-      } else {
-        this.mensagem = 'E-mail ou senha incorretos!';
-        this.mensagemCor = 'red';
+      // Login bem-sucedido
+      this.mensagem = `Bem-vindo(a), ${userCredential.user.email}!`;
+      this.mensagemCor = 'green';
+      this.loginForm.reset();
+
+      setTimeout(() => {
+        this.router.navigate(['/escolher-homenagem']); // sua página após login
+      }, 1200);
+
+    } catch (error: any) {
+      // Tratamento de erros do Firebase
+      switch (error.code) {
+        case 'auth/user-not-found':
+          this.mensagem = 'Usuário não encontrado.';
+          break;
+        case 'auth/wrong-password':
+          this.mensagem = 'Senha incorreta.';
+          break;
+        case 'auth/invalid-email':
+          this.mensagem = 'E-mail inválido.';
+          break;
+        default:
+          this.mensagem = 'Erro ao fazer login: ' + error.message;
       }
-
-    } catch (error) {
-      this.mensagem = 'Erro ao fazer login. Tente novamente.';
       this.mensagemCor = 'red';
       console.error(error);
 
