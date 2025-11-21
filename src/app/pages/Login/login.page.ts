@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,8 +13,7 @@ import {
   IonFooter
 } from '@ionic/angular/standalone';
 
-import { auth } from '../../../firebase-config'; // Importa Firebase Auth
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +40,9 @@ export class LoginPage {
   mensagemCor = '';
   carregando = false;
 
+  // 🔹 Injeta Auth do AngularFire
+  private auth = inject(Auth);
+
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -60,8 +62,8 @@ export class LoginPage {
     this.carregando = true;
 
     try {
-      // 🔥 Firebase Auth
-      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      // 🔹 Login via AngularFire Auth
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, senha);
 
       // Login bem-sucedido
       this.mensagem = `Bem-vindo(a), ${userCredential.user.email}!`;

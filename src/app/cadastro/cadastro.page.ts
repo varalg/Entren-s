@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,8 +13,7 @@ import {
   IonFooter
 } from '@ionic/angular/standalone';
 
-import { auth } from '../../firebase-config'; // Firebase Auth
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-cadastro',
@@ -40,6 +39,9 @@ export class CadastroPage {
   mensagem = '';
   mensagemCor = '';
 
+  // 🔹 Injeta o Auth do AngularFire
+  private auth = inject(Auth);
+
   constructor(private fb: FormBuilder, private router: Router) {
     this.cadastroForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -64,20 +66,15 @@ export class CadastroPage {
 
     const { email, senha } = this.cadastroForm.value;
 
-    // 🔥 Firebase Auth
-    createUserWithEmailAndPassword(auth, email, senha)
-      .then((userCredential) => {
-        // ✅ Arrow function mantém o 'this'
+    createUserWithEmailAndPassword(this.auth, email, senha)
+      .then(() => {
         this.mensagem = 'Cadastro realizado com sucesso!';
         this.mensagemCor = 'green';
         this.cadastroForm.reset();
 
-        setTimeout(() => {
-          this.router.navigate(['/login']);
-        }, 1200);
+        setTimeout(() => this.router.navigate(['/login']), 1200);
       })
-      .catch((error) => {
-        // ✅ Tratamento de erros do Firebase
+      .catch((error: any) => {
         switch (error.code) {
           case 'auth/email-already-in-use':
             this.mensagem = 'Este e-mail já está em uso.';
