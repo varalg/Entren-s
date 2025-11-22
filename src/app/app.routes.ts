@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'plano',
-    loadComponent: () => import('./plano/plano.page').then( m => m.PlanoPage)
+    loadComponent: () => import('./plano/plano.page').then( m => m.PlanosPage)
   },
   {
     path: 'previa-card',
@@ -34,6 +34,11 @@ export const routes: Routes = [
     path: 'escolher-homenagem',
     loadComponent: () => import('./escolher-homenagem/escolher-homenagem.page').then( m => m.EscolherHomenagemPage)
   },
+  {
+    path: 'checkout',
+    loadComponent: () => import('./pages/checkout/checkout.page').then( m => m.CheckoutPage)
+  },
+
 
 
   

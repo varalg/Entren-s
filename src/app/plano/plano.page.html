@@ -19,7 +19,7 @@
       <ion-card-content>
         <p>Conforme usar</p>
         <ion-note>R$ 14,90</ion-note>
-        <ion-button expand="block" class="btn-lilas">Assinar</ion-button>
+       <ion-button expand="block" (click)="assinar('basico')">Assinar</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -30,7 +30,7 @@
       <ion-card-content>
         <p>Uso Mensal</p>
         <ion-note>R$ 24,90</ion-note>
-        <ion-button expand="block" class="btn-rosa">Assinar</ion-button>
+      <ion-button expand="block" (click)="assinar('premium')">Assinar</ion-button>
       </ion-card-content>
       
     </ion-card>
