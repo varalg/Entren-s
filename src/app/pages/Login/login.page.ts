@@ -10,10 +10,12 @@ import {
   IonItem,
   IonButton,
   IonInput,
-  IonFooter
+  IonFooter,
+  IonIcon
 } from '@ionic/angular/standalone';
+import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
 
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +34,7 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
     IonFooter,
     IonHeader,
     IonToolbar,
+    IonIcon
   ],
 })
 export class LoginPage {
@@ -40,7 +43,11 @@ export class LoginPage {
   mensagemCor = '';
   carregando = false;
 
-  // 🔹 Injeta Auth do AngularFire
+  // Ícones do olho
+  mostrarSenha: boolean = false;
+  eyeIcon = eyeOutline;
+  eyeOffIcon = eyeOffOutline;
+
   private auth = inject(Auth);
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -62,20 +69,17 @@ export class LoginPage {
     this.carregando = true;
 
     try {
-      // 🔹 Login via AngularFire Auth
       const userCredential = await signInWithEmailAndPassword(this.auth, email, senha);
 
-      // Login bem-sucedido
       this.mensagem = `Bem-vindo(a), ${userCredential.user.email}!`;
       this.mensagemCor = 'green';
       this.loginForm.reset();
 
       setTimeout(() => {
-        this.router.navigate(['/escolher-homenagem']); // sua página após login
+        this.router.navigate(['/menu-layout/listar-homenagem']); 
       }, 1200);
 
     } catch (error: any) {
-      // Tratamento de erros do Firebase
       switch (error.code) {
         case 'auth/user-not-found':
           this.mensagem = 'Usuário não encontrado.';
@@ -94,6 +98,33 @@ export class LoginPage {
 
     } finally {
       this.carregando = false;
+    }
+  }
+
+  toggleSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
+
+  irParaCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
+  async redefinirSenha() {
+    const email = this.loginForm.get('email')?.value;
+    if (!email) {
+      this.mensagem = 'Digite seu e-mail para redefinir a senha.';
+      this.mensagemCor = 'red';
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(this.auth, email);
+      this.mensagem = 'E-mail de redefinição enviado com sucesso!';
+      this.mensagemCor = 'green';
+    } catch (error: any) {
+      this.mensagem = 'Erro ao enviar e-mail: ' + error.message;
+      this.mensagemCor = 'red';
+      console.error(error);
     }
   }
 }

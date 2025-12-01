@@ -12,11 +12,12 @@
 
     <!-- Título -->
     <h2>Crie sua conta</h2>
-    
+    <p>Preencha os campos abaixo para criar sua conta.</p>
 
     <!-- Formulário -->
     <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
 
+      <!-- E-mail -->
       <ion-item>
         <ion-input
           type="email"
@@ -25,28 +26,43 @@
         </ion-input>
       </ion-item>
 
+      <!-- Senha -->
       <ion-item>
         <ion-input
-          type="password"
+          [type]="mostrarSenha ? 'text' : 'password'"
           formControlName="senha"
           placeholder="Digite sua senha">
         </ion-input>
+        <ion-icon
+          slot="end"
+          [icon]="mostrarSenha ? eyeOffIcon : eyeIcon"
+          (click)="toggleSenha()">
+        </ion-icon>
       </ion-item>
 
+      <!-- Confirmar Senha -->
       <ion-item>
         <ion-input
-          type="password"
+          [type]="mostrarConfirmarSenha ? 'text' : 'password'"
           formControlName="confirmarSenha"
           placeholder="Confirme sua senha">
         </ion-input>
+        <ion-icon
+          slot="end"
+          [icon]="mostrarConfirmarSenha ? eyeOffIcon : eyeIcon"
+          (click)="toggleConfirmarSenha()">
+        </ion-icon>
       </ion-item>
 
+      <!-- Botão de cadastrar -->
       <ion-button expand="block" type="submit">Cadastrar</ion-button>
 
+      <!-- Mensagem de feedback -->
       <p class="mensagem" [style.color]="mensagemCor">{{ mensagem }}</p>
 
+      <!-- Link para login -->
       <div class="extra-links">
-        <a routerLink="/login">Já tem uma conta? Entrar</a>
+        <a (click)="irParaLogin()">Já tem uma conta? Entrar</a>
       </div>
 
     </form>

@@ -1,60 +1,94 @@
 <ion-header>
   <ion-toolbar class="fancy-header">
-    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="card-previa-page">
   <div class="container">
 
-    <!-- Editor de homenagem -->
+    <!-- Card de edição -->
     <ion-card class="editor">
-      <ion-card-title>Edite sua Homenagem</ion-card-title>
+      <ion-card-header>
+        <ion-card-title>Edite sua Homenagem</ion-card-title>
+      </ion-card-header>
 
-      <ion-item>
-        <ion-input placeholder="Título da homenagem" [(ngModel)]="titulo"></ion-input>
-      </ion-item>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Título da Homenagem</ion-label>
+          <ion-input placeholder="Digite o título" [(ngModel)]="titulo"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-textarea placeholder="Mensagem da homenagem" [(ngModel)]="mensagem"></ion-textarea>
-      </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Mensagem</ion-label>
+          <ion-textarea
+            placeholder="Digite sua mensagem"
+            [(ngModel)]="mensagem"
+            autoGrow="true"
+          ></ion-textarea>
+        </ion-item>
 
-      <!-- Link da imagem -->
-      <ion-item>
-        <ion-input placeholder="Link da imagem (opcional)" [(ngModel)]="imagemUrl"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link da Imagem (opcional)</ion-label>
+          <ion-input placeholder="https://..." [(ngModel)]="imagemUrl"></ion-input>
+        </ion-item>
 
-      <!-- Link do Spotify -->
-      <ion-item>
-        <ion-input placeholder="Link Spotify (opcional)" [(ngModel)]="spotifyUrl"></ion-input>
-      </ion-item>
-
+        <ion-item>
+          <ion-label position="stacked">Link Spotify (opcional)</ion-label>
+          <ion-input
+            placeholder="Cole o link da música"
+            [(ngModel)]="spotifyUrl"
+            (ionChange)="atualizarSpotify()"
+          ></ion-input>
+        </ion-item>
+      </ion-card-content>
     </ion-card>
 
     <!-- Preview da homenagem -->
-    <div class="preview">
-      <h2 class="titulo">{{ titulo || 'Seu título aqui' }}</h2>
-      <p class="mensagem">{{ mensagem || 'Sua mensagem aparecerá aqui...' }}</p>
+    <ion-card class="preview-card">
+      <ion-card-header>
+        <ion-card-title>Pré-visualização</ion-card-title>
+      </ion-card-header>
 
-      <!-- IMAGEM -->
-      <div class="imagem-container" *ngIf="imagemUrl">
-        <img [src]="imagemUrl" alt="Imagem da homenagem" />
-      </div>
+      <ion-card-content>
+        <h2 class="titulo">{{ titulo || 'Seu título aqui' }}</h2>
+        <p class="mensagem">{{ mensagem || 'Sua mensagem aparecerá aqui...' }}</p>
 
-      <!-- Spotify embed -->
-      <div class="spotify-container" *ngIf="spotifyUrl">
-  <iframe 
-    [src]="sanitizedSpotifyUrl"
-    width="100%" 
-    height="80" 
-    frameborder="0"
-    allowtransparency="true" 
-    allow="encrypted-media">
-  </iframe>
-</div>
+        <!-- IMAGEM -->
+        <div class="imagem-container" *ngIf="imagemUrl">
+          <img [src]="imagemUrl" alt="Imagem da homenagem" />
+        </div>
 
+        <!-- SPOTIFY -->
+        <div class="spotify-container" *ngIf="sanitizedSpotifyUrl">
+          <iframe
+            [src]="sanitizedSpotifyUrl"
+            width="100%"
+            height="80"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-    </div>
+    <!-- Botões de gerar link e download -->
+    <ion-button expand="full" color="primary" (click)="gerarLinkHomenagem()">
+      Gerar Link da Homenagem
+    </ion-button>
+
+    <ion-button expand="full" color="success" [disabled]="!linkHomenagem" (click)="baixarHomenagem()">
+      Baixar Homenagem
+    </ion-button>
+
+    <!-- Mostrar link gerado -->
+    <ion-item *ngIf="linkHomenagem">
+      <ion-label>Link da Homenagem:</ion-label>
+      <a [href]="linkHomenagem" target="_blank">{{ linkHomenagem }}</a>
+    </ion-item>
 
   </div>
 </ion-content>

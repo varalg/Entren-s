@@ -10,8 +10,10 @@ import {
   IonItem,
   IonButton,
   IonInput,
-  IonFooter
+  IonFooter,
+  IonIcon
 } from '@ionic/angular/standalone';
+import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
 
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
@@ -31,7 +33,8 @@ import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
     IonTitle,
     IonHeader,
     IonToolbar,
-    IonFooter
+    IonFooter,
+    IonIcon
   ],
 })
 export class CadastroPage {
@@ -39,7 +42,13 @@ export class CadastroPage {
   mensagem = '';
   mensagemCor = '';
 
-  // 🔹 Injeta o Auth do AngularFire
+  mostrarSenha: boolean = false;
+  mostrarConfirmarSenha: boolean = false;
+
+  // Ícones do olho
+  eyeIcon = eyeOutline;
+  eyeOffIcon = eyeOffOutline;
+
   private auth = inject(Auth);
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -90,5 +99,17 @@ export class CadastroPage {
         }
         this.mensagemCor = 'red';
       });
+  }
+
+  toggleSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
+
+  toggleConfirmarSenha() {
+    this.mostrarConfirmarSenha = !this.mostrarConfirmarSenha;
+  }
+
+  irParaLogin() {
+    this.router.navigate(['/login']);
   }
 }

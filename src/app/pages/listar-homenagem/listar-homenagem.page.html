@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Minhas Homenagens</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="criarNova()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="cards-grid">
+    <ng-container *ngIf="homenagens.length; else vazio">
+      <ion-card *ngFor="let h of homenagens" class="canva-card">
+        <div class="card-media" [ngStyle]="{'background-image': 'url(' + h.imagemUrl + ')'}">
+          <div class="overlay">
+            <h3>{{ h.titulo }}</h3>
+          </div>
+        </div>
+
+        <ion-card-content>
+          <p class="mensagem">{{ h.mensagem | slice:0:140 }}{{ h.mensagem.length > 140 ? '...' : '' }}</p>
+
+          <div class="card-actions">
+            <ion-button size="small" (click)="verDetalhes(h)">Ver</ion-button>
+            <ion-button size="small" fill="clear" (click)="tocar(h)">
+              <ion-icon slot="icon-only" name="play-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+          <audio #player [src]="h.audioUrl" controls *ngIf="h.audioUrl" class="audio-player"></audio>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+
+    <ng-template #vazio>
+      <div class="vazio-box">
+        <h3>Você ainda não tem homenagens</h3>
+        <p>Clique no botão + para criar a primeira.</p>
+        <ion-button (click)="criarNova()">Criar primeira</ion-button>
+      </div>
+    </ng-template>
+  </div>
+</ion-content>

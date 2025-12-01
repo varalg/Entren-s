@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar class="fancy-header">
-    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,15 +11,13 @@
     <!-- Logo -->
     <img src="assets/logo-2.png" alt="Logo" class="logo" />
 
-    <!-- Título -->
-    <h1 class="titulo">Escolha o tipo de homenagem</h1>
-
     <div class="container">
       <!-- Card: Modelo pronto -->
       <div class="card" (click)="homenagens()">
         <ion-icon name="gift-outline"></ion-icon>
         <h2>Modelo Pronto</h2>
       </div>
+
       <!-- Card: Customizar -->
       <div class="card" (click)="previaCard()">
         <ion-icon name="create-outline"></ion-icon>

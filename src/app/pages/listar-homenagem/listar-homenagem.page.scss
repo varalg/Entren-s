@@ -1,0 +1,65 @@
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* Estilo "Canva" para o card */
+.canva-card {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+}
+
+.canva-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(15,23,42,0.18);
+}
+
+.card-media {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-media .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.45));
+  color: white;
+}
+
+.card-media h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Conteúdo do card */
+ion-card-content {
+  padding: 14px;
+}
+
+.mensagem {
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Ações */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.vazio-box {
+  text-align: center;
+  padding: 40px;
+  grid-column: 1 / -1;
+}

@@ -56,7 +56,6 @@ ion-button {
   font-weight: bold;
   border-radius: 12px;
   width: 100%;
-
 }
 
 ion-button[fill="outline"] {
@@ -70,21 +69,33 @@ ion-button[fill="outline"] {
   color: #2F6F77;
 }
 
+/* ===== Links de criar conta e esqueci senha ===== */
 .extra-links {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* espaço entre links */
   width: 100%;
-  font-size: 13px;
 }
 
 .extra-links a {
-  color: #265C63;
-  text-decoration: none;
-  font-weight: bold;
+  display: block;          /* faz o link ocupar toda a largura definida */
+  width: 200px;            /* largura igual para todos os links */
+  text-align: center;      /* centraliza o texto */
+  padding: 10px 0;         /* altura para parecer um botão */
+  color: #265C63;          /* cor do texto */
+  text-decoration: none;   /* remove sublinhado */
+  font-weight: bold;       /* texto em negrito */
+  transition: 0.3s;
 }
 
-/* Header (igual ao home) */
+.extra-links a:hover {
+  color: #02705e;          
+  text-decoration: underline;
+}
+
+/* Header */
 .fancy-header {
   --background: linear-gradient(135deg,#02a0b4, #02705e); 
   height: 60px;
@@ -92,14 +103,19 @@ ion-button[fill="outline"] {
   color: #FFFFFF;
 }
 
-/* Footer com mesmo estilo */
+/* Footer */
 .footer-bar {
   --background: #F8F6F2;
   --color: #265C63;
   text-align: center;
+  height: 30px; /* altura fixa para footer pequeno */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-text {
   font-size: 7px;
   color: #265C63;
+  margin: 0;
 }
