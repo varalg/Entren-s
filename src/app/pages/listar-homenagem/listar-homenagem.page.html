@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="fancy-header">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -15,37 +15,56 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="cards-grid">
-    <ng-container *ngIf="homenagens.length; else vazio">
-      <ion-card *ngFor="let h of homenagens" class="canva-card">
-        <div class="card-media" [ngStyle]="{'background-image': 'url(' + h.imagemUrl + ')'}">
-          <div class="overlay">
-            <h3>{{ h.titulo }}</h3>
-          </div>
-        </div>
+<ion-content class="login-content">
+  <div class="login-container">
+    <h2 class="titulo">Minhas Homenagens</h2>
 
-        <ion-card-content>
-          <p class="mensagem">{{ h.mensagem | slice:0:140 }}{{ h.mensagem.length > 140 ? '...' : '' }}</p>
+    <div class="cards-grid">
+      <ng-container *ngIf="homenagens.length; else vazio">
+        <div class="card" *ngFor="let h of homenagens">
+          <div class="card-img" [ngStyle]="{'background-image': 'url(' + h.imagemUrl + ')'}"></div>
+          <h2>{{ h.titulo }}</h2>
+          <p>{{ h.mensagem | slice:0:100 }}{{ h.mensagem.length > 100 ? '...' : '' }}</p>
 
           <div class="card-actions">
             <ion-button size="small" (click)="verDetalhes(h)">Ver</ion-button>
-            <ion-button size="small" fill="clear" (click)="tocar(h)">
+            <ion-button size="small" fill="clear" *ngIf="h.audioUrl" (click)="tocar(h)">
               <ion-icon slot="icon-only" name="play-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button size="small" color="danger" fill="clear" (click)="excluir(h)">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
             </ion-button>
           </div>
 
           <audio #player [src]="h.audioUrl" controls *ngIf="h.audioUrl" class="audio-player"></audio>
-        </ion-card-content>
-      </ion-card>
-    </ng-container>
 
-    <ng-template #vazio>
-      <div class="vazio-box">
-        <h3>Você ainda não tem homenagens</h3>
-        <p>Clique no botão + para criar a primeira.</p>
-        <ion-button (click)="criarNova()">Criar primeira</ion-button>
-      </div>
-    </ng-template>
+          <iframe
+            *ngIf="h.spotifySafeUrl"
+            [src]="h.spotifySafeUrl"
+            width="100%"
+            height="80"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+        </div>
+      </ng-container>
+
+      <ng-template #vazio>
+        <div class="vazio-box">
+          <h3>Você ainda não tem homenagens</h3>
+          <p>Clique no botão + para criar a primeira.</p>
+          <ion-button (click)="criarNova()">Criar primeira</ion-button>
+        </div>
+      </ng-template>
+    </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-bar">
+    <ion-title class="footer-text">
+      © 2025 App Entre-nós. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

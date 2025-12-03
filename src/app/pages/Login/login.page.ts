@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,11 +11,11 @@ import {
   IonButton,
   IonInput,
   IonFooter,
-  IonIcon
+  IonIcon,
+  ToastController
 } from '@ionic/angular/standalone';
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
-
-import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -37,30 +37,36 @@ import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail } from '@angul
     IonIcon
   ],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   loginForm: FormGroup;
-  mensagem = '';
-  mensagemCor = '';
-  carregando = false;
 
-  // Ícones do olho
   mostrarSenha: boolean = false;
   eyeIcon = eyeOutline;
   eyeOffIcon = eyeOffOutline;
+  carregando = false;
 
-  private auth = inject(Auth);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private toastCtrl = inject(ToastController);
+  private fb = inject(FormBuilder);
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
+  ngOnInit() {
+    // Redireciona automaticamente se o usuário já estiver logado
+    if (this.authService.uid) {
+      this.router.navigate(['/menu-layout/listar-homenagem'], { replaceUrl: true });
+    }
+  }
+
   async login() {
     if (this.loginForm.invalid) {
-      this.mensagem = 'Preencha os campos corretamente.';
-      this.mensagemCor = 'red';
+      this.showToast('Preencha os campos corretamente.', 'danger');
       this.loginForm.markAllAsTouched();
       return;
     }
@@ -69,33 +75,31 @@ export class LoginPage {
     this.carregando = true;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(this.auth, email, senha);
+      await this.authService.login(email, senha);
+      
+// Espera o próximo ciclo do Angular
+setTimeout(() => {
+  this.router.navigate(['/menu-layout/listar-homenagem'], { replaceUrl: true });
+  this.showToast(`Bem-vindo(a), ${email}!`, 'success');
+}, 50);
 
-      this.mensagem = `Bem-vindo(a), ${userCredential.user.email}!`;
-      this.mensagemCor = 'green';
+
       this.loginForm.reset();
-
-      setTimeout(() => {
-        this.router.navigate(['/menu-layout/listar-homenagem']); 
-      }, 1200);
-
     } catch (error: any) {
+      let msg = 'Erro ao fazer login.';
       switch (error.code) {
         case 'auth/user-not-found':
-          this.mensagem = 'Usuário não encontrado.';
+          msg = 'Usuário não encontrado.';
           break;
         case 'auth/wrong-password':
-          this.mensagem = 'Senha incorreta.';
+          msg = 'Senha incorreta.';
           break;
         case 'auth/invalid-email':
-          this.mensagem = 'E-mail inválido.';
+          msg = 'E-mail inválido.';
           break;
-        default:
-          this.mensagem = 'Erro ao fazer login: ' + error.message;
       }
-      this.mensagemCor = 'red';
+      this.showToast(msg, 'danger');
       console.error(error);
-
     } finally {
       this.carregando = false;
     }
@@ -112,19 +116,26 @@ export class LoginPage {
   async redefinirSenha() {
     const email = this.loginForm.get('email')?.value;
     if (!email) {
-      this.mensagem = 'Digite seu e-mail para redefinir a senha.';
-      this.mensagemCor = 'red';
+      this.showToast('Digite seu e-mail para redefinir a senha.', 'danger');
       return;
     }
 
     try {
-      await sendPasswordResetEmail(this.auth, email);
-      this.mensagem = 'E-mail de redefinição enviado com sucesso!';
-      this.mensagemCor = 'green';
+      await this.authService.resetPassword(email);
+      this.showToast('E-mail de redefinição enviado com sucesso!', 'success');
     } catch (error: any) {
-      this.mensagem = 'Erro ao enviar e-mail: ' + error.message;
-      this.mensagemCor = 'red';
+      this.showToast('Erro ao enviar e-mail: ' + error.message, 'danger');
       console.error(error);
     }
+  }
+
+  private showToast(message: string, color: 'success' | 'danger') {
+    // Cria e apresenta o Toast sem await
+    this.toastCtrl.create({
+      message,
+      duration: 1500,
+      color,
+      position: 'top'
+    }).then(toast => toast.present());
   }
 }

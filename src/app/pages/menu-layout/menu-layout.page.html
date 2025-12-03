@@ -10,27 +10,30 @@
     <ion-content>
       <ion-list>
 
-        <!-- Minhas Homenagens -->
         <ion-item routerLink="/menu-layout/listar-homenagem" routerDirection="root">
           Minhas Homenagens
         </ion-item>
 
-        <!-- Lista de Homenagens -->
-        <ion-item routerLink="/menu-layout/homenagens" routerDirection="forward">
+        <ion-item routerLink="/menu-layout/homenagens">
           Lista de Homenagens
         </ion-item>
 
-        <!-- Personalização -->
-        <ion-item routerLink="/menu-layout/previa-card" routerDirection="forward">
+        <ion-item routerLink="/menu-layout/planos">
+          Planos
+        </ion-item>
+
+        <ion-item routerLink="/menu-layout/escolher-homenagem">
+          Escolher Homenagem
+        </ion-item>
+
+        <ion-item routerLink="/menu-layout/previa-card">
           Personalização
         </ion-item>
 
-        <!-- Política de Privacidade -->
-        <ion-item routerLink="/menu-layout/politica-privacidade" routerDirection="forward">
+        <ion-item routerLink="/menu-layout/politica-privacidade">
           Política de Privacidade
         </ion-item>
 
-        <!-- Logout -->
         <ion-item (click)="logout()">
           Encerrar Sessão
         </ion-item>
@@ -39,6 +42,6 @@
     </ion-content>
   </ion-menu>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- CONTEÚDO PRINCIPAL QUE CARREGA AS SUBROTAS -->
   <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

@@ -1,118 +1,113 @@
-/* ===== Homenagem Page Styling ===== */
-.homenagem-content {
+/* ===== Página Previa Card ===== */
+.preview-card-content {
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  text-align: center;
-  min-height: 100vh;
-  --background: linear-gradient(to bottom, #F8F6F2, #265C63);
-  font-family: 'Helvetica Neue', sans-serif;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* ocupa toda a altura da tela */
   padding: 20px;
+  background: linear-gradient(to bottom right, #eaf4f5, #d9f0f2);
+  font-family: 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
 }
 
-.homenagem-container {
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  background: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* ===== Caixa da Homenagem ===== */
+.preview-card-box {
+  width: 90%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-h2 {
-  margin: 10px 0 5px;
-  color: #035e56; 
-  font-weight: bold;
+.preview-card-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-p {
-  color: #2F6F77; 
-  font-size: 14px;
-  margin-bottom: 10px;
+/* ===== Título ===== */
+.preview-card-box h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #02705e;
+  margin: 0;
 }
 
-ion-item {
-  margin-bottom: 15px;
-  border-radius: 8px;
-  --background: #F8F6F2; 
-  --color: #265C63;
-}
-
-ion-input::part(native),
-ion-textarea::part(native) {
-  color: #265C63;
-}
-
-ion-button {
-  --background:  #006e60; 
-  --color: #FFFFFF;
-  font-weight: bold;
-  border-radius: 12px;
-  width: 100%;
-}
-
-ion-button[disabled] {
-  --background: #9BC3BC;
-  --color: #ffffff;
-}
-
-.preview-card {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-  border: 1px solid #e0e0e0;
-  text-align: left;
-  padding: 15px;
-  background: #ffffff;
-}
-
-.titulo-preview {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #035e56;
-  margin-bottom: 8px;
-}
-
-.mensagem-preview {
+/* ===== Mensagem ===== */
+.preview-card-box p {
   font-size: 1rem;
-  color: #2F6F77;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #035e56;
+  margin: 0;
 }
 
-.imagem-container img {
+/* ===== Imagem ===== */
+.preview-card-box img {
   width: 100%;
-  border-radius: 10px;
+  max-height: 300px;
+  border-radius: 14px;
+  object-fit: cover;
   margin-top: 10px;
 }
 
-.spotify-container iframe {
-  border-radius: 10px;
+/* ===== Spotify ===== */
+.spotify-iframe {
+  width: 100%;
+  height: 80px;
+  border-radius: 12px;
   margin-top: 10px;
+  border: none;
 }
 
-.link-item a {
-  color: #006e60;
-  text-decoration: underline;
+/* ===== Botão de Download ===== */
+.download-button {
+  --background: #02a0b4;
+  --color: #ffffff;
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.download-button:hover {
+  --background: #02705e;
+  transform: translateY(-1px);
+}
+
+/* ===== Header ===== */
 .fancy-header {
-  --background: linear-gradient(135deg, #02a0b4, #02705e); 
+  --background: linear-gradient(135deg, #02a0b4, #02705e);
   height: 60px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  color: #FFFFFF;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.footer-bar {
-  --background: #F8F6F2;
-  --color: #265C63;
-  text-align: center;
-}
+/* ===== Responsividade ===== */
+@media (max-width: 480px) {
+  .preview-card-box {
+    padding: 20px 15px;
+  }
 
-.footer-text {
-  font-size: 7px;
-  color: #265C63;
+  .preview-card-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .preview-card-box p {
+    font-size: 0.95rem;
+  }
 }

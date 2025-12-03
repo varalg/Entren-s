@@ -41,6 +41,10 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'planos',
+        loadComponent: () => import('./plano/plano.page').then(m => m.PlanosPage)
+      },
+      {
         path: 'escolher-homenagem',
         loadComponent: () =>
           import('./escolher-homenagem/escolher-homenagem.page').then(

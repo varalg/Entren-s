@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { HomenagemService } from 'src/app/services/homenagem.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { HomenagemService, Homenagem } from 'src/app/services/homenagem.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,44 +14,67 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./listar-homenagem.page.scss']
 })
 export class ListarHomenagensPage {
-  homenagens: any[] = [];
+  homenagens: (Homenagem & { spotifySafeUrl?: SafeResourceUrl })[] = [];
 
   constructor(
     private router: Router,
     private homenagemService: HomenagemService,
-    private auth: AuthService
+    private auth: AuthService,
+    private sanitizer: DomSanitizer
   ) {}
+
+  tocar(h: Homenagem & { audioUrl?: string }) {
+  if (h.audioUrl) {
+    const audio = new Audio(h.audioUrl);
+    audio.play();
+  }
+}
+
 
   ngOnInit() {
     this.carregarHomenagens();
   }
 
-  // Carrega as homenagens do usuário
-  async carregarHomenagens() {
-    this.homenagens = await this.homenagemService.listarMinhasHomenagens();
+ async carregarHomenagens() {
+  try {
+    const lista = await this.homenagemService.listarMinhasHomenagens();
+    this.homenagens = lista.map(h => ({
+      ...h,
+      audioUrl: h.audioUrl || undefined, // garante que exista
+      spotifySafeUrl: h.spotifyUrl
+        ? this.sanitizer.bypassSecurityTrustResourceUrl(h.spotifyUrl)
+        : undefined
+    }));
+  } catch (e) {
+    console.error('Erro ao carregar homenagens', e);
+    alert('Não foi possível carregar suas homenagens.');
   }
+}
 
-  // Navega para a página de escolher homenagem (com menu)
   criarNova() {
-    this.router.navigate(['/menu-layout/escolher-homenagem']);
-  }
+  this.router.navigate(['/menu-layout/planos']); // ou apenas '/planos' dependendo do seu layout
+}
 
-  // Visualizar detalhes da homenagem (prévia)
-  verDetalhes(h: any) {
+  verDetalhes(h: Homenagem) {
     this.router.navigate(['/menu-layout/previa-card', h.id]);
   }
 
-  // Tocar áudio da homenagem
-  tocar(h: any) {
-    if (h.audioUrl) {
-      const audio = new Audio(h.audioUrl);
-      audio.play();
-    }
-  }
-
-  // Logout do usuário
   logout() {
     this.auth.logout();
     this.router.navigate(['/login'], { replaceUrl: true });
+  }
+
+  async excluir(h: Homenagem) {
+    const confirmDelete = window.confirm(`Deseja realmente excluir "${h.titulo}"?`);
+    if (!confirmDelete) return;
+
+    try {
+      await this.homenagemService.deletarHomenagem(h.id!);
+      this.homenagens = this.homenagens.filter(item => item.id !== h.id);
+      alert('Homenagem excluída com sucesso!');
+    } catch (e) {
+      console.error('Erro ao excluir homenagem', e);
+      alert('Não foi possível excluir a homenagem.');
+    }
   }
 }

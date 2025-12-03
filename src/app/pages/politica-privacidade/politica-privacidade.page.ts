@@ -1,18 +1,11 @@
 import { Component } from '@angular/core';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonMenuButton,
-  IonContent,
-} from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-politica-privacidade',
   standalone: true,
-  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton, IonContent],
+  imports: [IonicModule, CommonModule],
   templateUrl: './politica-privacidade.page.html',
   styleUrls: ['./politica-privacidade.page.scss'],
 })

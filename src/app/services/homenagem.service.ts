@@ -1,66 +1,54 @@
-import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from 'src/environments/firebaseConfig';
-import { getFirestore, collection, addDoc, query, where, getDocs, orderBy } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { getAuth } from 'firebase/auth';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, addDoc, collectionData, query, where, orderBy, doc, deleteDoc } from '@angular/fire/firestore';
+import { AuthService } from './auth.service';
+import { firstValueFrom } from 'rxjs';
+
+export interface Homenagem {
+  id?: string;
+  uid?: string;
+  titulo: string;
+  mensagem: string;
+  imagemUrl?: string;
+  spotifyUrl?: string;
+  criadoEm: Date;
+  audioUrl?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomenagemService {
-  private app = initializeApp(firebaseConfig);
-  private db = getFirestore(this.app);
-  private storage = getStorage(this.app);
-  private auth = getAuth(this.app);
+  private firestore: Firestore = inject(Firestore);
+  private auth = inject(AuthService);
 
-  constructor() {}
+  // Cria homenagem
+  async criarHomenagem(h: Omit<Homenagem, 'id' | 'uid'>): Promise<string> {
+    const uid = this.auth.user?.uid;
+    if (!uid) throw new Error('Usuário não logado');
 
-  private async uploadArquivo(path: string, arquivo: File) {
-    const fileRef = ref(this.storage, path);
-    await uploadBytes(fileRef, arquivo);
-    return await getDownloadURL(fileRef);
-  }
-
-  async criarHomenagem(titulo: string, mensagem: string, imagem: File, audio: File | null) {
-    const user = this.auth.currentUser;
-    if (!user) throw new Error('Usuário não autenticado');
-
-    const autorId = user.uid;
-    const timestamp = Date.now();
-
-    const imagemUrl = await this.uploadArquivo(`homenagens/${autorId}/${timestamp}_img_${imagem.name}`, imagem);
-
-    let audioUrl = '';
-    if (audio) {
-      audioUrl = await this.uploadArquivo(`homenagens/${autorId}/${timestamp}_audio_${audio.name}`, audio);
-    }
-
-    await addDoc(collection(this.db, 'homenagens'), {
-      titulo,
-      mensagem,
-      imagemUrl,
-      audioUrl,
-      autorId,
-      data: new Date().toISOString()
+    const docRef = await addDoc(collection(this.firestore, 'homenagens'), {
+      ...h,
+      uid
     });
 
-    return true;
+    return docRef.id;
   }
 
-  // Busca apenas homenagens do usuário atual, ordenadas pela data (mais recente primeiro)
-  async listarMinhasHomenagens() {
-    const user = this.auth.currentUser;
-    if (!user) throw new Error('Usuário não autenticado');
+  // Lista homenagens do usuário logado
+  async listarMinhasHomenagens(): Promise<Homenagem[]> {
+    const uid = this.auth.user?.uid;
+    if (!uid) return [];
 
-    const homenagensRef = collection(this.db, 'homenagens');
-    const q = query(homenagensRef, where('autorId', '==', user.uid), orderBy('data', 'desc'));
-    const snapshot = await getDocs(q);
+    const colRef = collection(this.firestore, 'homenagens');
+    const q = query(colRef, where('uid', '==', uid), orderBy('criadoEm', 'desc'));
 
-    const items: any[] = [];
-    snapshot.forEach(doc => {
-      items.push({ id: doc.id, ...doc.data() });
-    });
-    return items;
+    const snapshot = await firstValueFrom(collectionData(q, { idField: 'id' }));
+    return snapshot as Homenagem[];
+  }
+
+  // Deleta homenagem
+  async deletarHomenagem(id: string) {
+    const docRef = doc(this.firestore, `homenagens/${id}`);
+    await deleteDoc(docRef);
   }
 }

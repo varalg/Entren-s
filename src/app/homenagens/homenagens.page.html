@@ -10,20 +10,33 @@
 <ion-content class="homenagens-content">
   <div class="content-container">
 
-    <!-- Barra de busca -->
     <div class="search-bar">
       <ion-input placeholder="Pesquisar homenagem..." [(ngModel)]="termoBusca"></ion-input>
       <ion-button (click)="buscar()">Buscar</ion-button>
     </div>
 
-    <!-- Lista de homenagens -->
     <div class="homenagens-list">
-      <div class="card" *ngFor="let homenagem of homenagensFiltradas()">
+
+      <ion-card class="card" *ngFor="let homenagem of homenagensFiltradas()">
+
         <img [src]="homenagem.imagem" alt="Imagem da homenagem" />
-        <h3>{{ homenagem.titulo }}</h3>
-        <p>{{ homenagem.texto }}</p>
-        <ion-button expand="block" (click)="verHomenagem(homenagem)">Visualizar</ion-button>
-      </div>
+
+        <ion-card-header>
+          <ion-card-title>{{ homenagem.titulo }}</ion-card-title>
+          <ion-card-subtitle>Homenagem</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>{{ homenagem.texto }}</p>
+        </ion-card-content>
+
+        <!-- Botão funcionando e com cor certa -->
+        <ion-button expand="block" class="btn-baixar" (click)="baixarImagem(homenagem)">
+          Baixar
+        </ion-button>
+
+      </ion-card>
+
     </div>
 
   </div>

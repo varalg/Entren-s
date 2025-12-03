@@ -1,30 +1,34 @@
 import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from 'src/environments/firebaseConfig';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from '@angular/fire/auth';
+import { inject } from '@angular/core';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  private app = initializeApp(firebaseConfig);
-  private auth = getAuth(this.app);
+  private auth = inject(Auth);
 
-  // ✅ Cadastro
-  async register(email: string, password: string) {
-    return await createUserWithEmailAndPassword(this.auth, email, password);
-  }
-
-  // ✅ Login
-  async login(email: string, password: string) {
-    return await signInWithEmailAndPassword(this.auth, email, password);
-  }
-
-  // ✅ Logout
-  async logout() {
-    await signOut(this.auth);
-  }
-
-  // ✅ Usuário atual
-  get currentUser() {
+  get user() {
     return this.auth.currentUser;
+  }
+
+  get uid() {
+    return this.auth.currentUser?.uid || null;
+  }
+
+  async login(email: string, senha: string) {
+    return signInWithEmailAndPassword(this.auth, email, senha);
+  }
+
+  async register(email: string, senha: string) {
+    return createUserWithEmailAndPassword(this.auth, email, senha);
+  }
+
+  async logout() {
+    return signOut(this.auth);
+  }
+
+  async resetPassword(email: string) {
+    return sendPasswordResetEmail(this.auth, email);
   }
 }
