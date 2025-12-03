@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content class="preview-card-content ion-padding">
-  <!-- FORMULÁRIO: só aparece se não for link -->
+  <!-- FORMULÁRIO: só aparece se não tiver link ainda -->
   <div *ngIf="!linkHomenagem">
     <ion-item>
       <ion-label position="floating">Título</ion-label>
@@ -32,15 +32,9 @@
     <ion-button expand="full" (click)="gerarLinkHomenagem()" class="ion-margin-top download-button">
       Salvar Homenagem
     </ion-button>
-
-
-
-    <p *ngIf="linkHomenagem" class="ion-margin-top">
-      Link da Homenagem: <a [href]="linkHomenagem" target="_blank">{{ linkHomenagem }}</a>
-    </p>
   </div>
 
-  <!-- PREVIEW DA HOMENAGEM: aparece sempre -->
+  <!-- PREVIEW DA HOMENAGEM -->
   <ion-card #previewCard class="preview-card-box ion-margin-top">
     <ion-card-header>
       <ion-card-title>{{ titulo || 'Título da Homenagem' }}</ion-card-title>
@@ -51,4 +45,21 @@
       <iframe *ngIf="sanitizedSpotifyUrl" class="spotify-iframe" [src]="sanitizedSpotifyUrl"></iframe>
     </ion-card-content>
   </ion-card>
+
+  <!-- LINK DA HOMENAGEM: aparece depois de salvar -->
+  <div *ngIf="linkHomenagem" class="ion-margin-top">
+    <p>Link da Homenagem:</p>
+    <ion-item>
+      <ion-input [value]="linkHomenagem" readonly></ion-input>
+      <ion-button slot="end" (click)="copiarLink()" color="primary">Copiar</ion-button>
+    </ion-item>
+    <p class="ion-margin-top">
+      <a [href]="linkHomenagem" target="_blank">Abrir Homenagem</a>
+    </p>
+  </div>
+
+  <!-- BOTÃO PARA BAIXAR O CARD -->
+  <ion-button expand="full" (click)="baixarHomenagem()" class="ion-margin-top download-button">
+    Baixar Homenagem
+  </ion-button>
 </ion-content>

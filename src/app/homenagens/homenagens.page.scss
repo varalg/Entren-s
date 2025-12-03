@@ -1,4 +1,5 @@
-.homenagens-content {
+/* ===== Fundo e container principal ===== */
+.login-content, .homenagens-content {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -9,7 +10,7 @@
   padding: 20px;
 }
 
-.content-container {
+.login-container, .content-container {
   width: 100%;
   max-width: 500px;
   display: flex;
@@ -20,8 +21,27 @@
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   padding: 20px;
+  gap: 20px;
 }
 
+/* ===== Logo ===== */
+.logo, .header-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* ===== Título principal ===== */
+.titulo {
+  color: #265C63;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* ===== Barra de busca ===== */
 .search-bar {
   display: flex;
   gap: 8px;
@@ -49,7 +69,9 @@
   font-weight: bold;
   padding: 0;
 }
-.homenagens-list {
+
+/* ===== Container dos cards ===== */
+.container, .homenagens-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -57,7 +79,8 @@
   align-items: center;
 }
 
-.homenagens-list .card {
+/* ===== Cards ===== */
+.card, .homenagens-list .card {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -65,33 +88,45 @@
   max-width: 400px;
   padding: 15px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.3s;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
-.homenagens-list .card:hover {
+.card:hover, .homenagens-list .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
 
-.homenagens-list .card img {
+/* ===== Imagem dos cards ===== */
+.card-img, .homenagens-list .card img {
   width: 100%;
-  border-radius: 12px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
   margin-bottom: 10px;
 }
 
-.homenagens-list .card h3 {
+/* ===== Ícones dentro dos cards ===== */
+ion-icon {
+  font-size: 36px;
   color: #265C63;
-  margin: 10px 0 5px;
-  font-size: 16px;
+  margin-bottom: 6px;
 }
 
-.homenagens-list .card p {
-  color: #2F6F77;
+/* ===== Título e descrição dos cards ===== */
+.card h2, .homenagens-list .card h3 {
+  color: #265C63;
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+.card p, .homenagens-list .card p {
   font-size: 14px;
+  color: #2F6F77;
   margin-bottom: 10px;
 }
 
+/* ===== Botão dentro dos cards ===== */
 .homenagens-list .card ion-button {
   --background: #265C63;
   --color: #fff;
@@ -101,6 +136,7 @@
   padding: 6px 12px;
 }
 
+/* ===== Header estilizado ===== */
 .fancy-header {
   --background: linear-gradient(135deg, #02a0b4, #02705e);
   height: 60px;
@@ -118,13 +154,7 @@
   text-align: center;
 }
 
-.header-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
+/* ===== Footer estilizado ===== */
 .footer-bar {
   --background: linear-gradient(to right, #F8F6F2,#265C63);
   height: 50px;

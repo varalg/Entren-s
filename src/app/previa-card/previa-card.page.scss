@@ -26,15 +26,21 @@
   gap: 15px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* ESSENCIAL para funcionar no html2canvas */
+  transform: scale(1) !important;
+  -webkit-transform: scale(1) !important;
 }
 
+/* Hover do card */
 .preview-card-box:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== Título ===== */
-.preview-card-box h3 {
+.preview-card-box h3,
+ion-card-title {
   font-size: 1.6rem;
   font-weight: 700;
   color: #02705e;
@@ -103,7 +109,8 @@
     padding: 20px 15px;
   }
 
-  .preview-card-box h3 {
+  .preview-card-box h3,
+  ion-card-title {
     font-size: 1.4rem;
   }
 
